@@ -402,27 +402,65 @@
 	}
 
 	
-	//Contact Form Validation
-	if($('#contact-form').length){
-		$('#contact-form').validate({
-			rules: {
-				username: {
-					required: true
-				},
-				email: {
-					required: true,
-					email: true
-				},
-				subject: {
-					required: true
-				},
-				message: {
-					required: true
-				}
-			}
-		});
-	}
-	
+	// Contact Form Validation
+$(document).ready(function() {
+    if($('#contact-form').length){
+        $('#contact-form').validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                subject: {
+                    required: true,
+                    minlength: 5
+                },
+                message: {
+                    required: true,
+                    minlength: 10
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter your name",
+                    minlength: "Your name must be at least 2 characters long"
+                },
+                email: {
+                    required: "Please enter your email address",
+                    email: "Please enter a valid email address"
+                },
+                subject: {
+                    required: "Please enter a subject",
+                    minlength: "Subject must be at least 5 characters long"
+                },
+                message: {
+                    required: "Please enter your message",
+                    minlength: "Message must be at least 10 characters long"
+                }
+            },
+            errorElement: "span",
+            errorPlacement: function(error, element) {
+                error.addClass("invalid-feedback");
+                element.closest(".form-group").append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass("is-invalid").removeClass("is-valid");
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass("is-invalid").addClass("is-valid");
+            },
+            submitHandler: function(form) {
+                // Form submission logic here
+                alert('Form submitted successfully!');
+                form.submit();
+            }
+        });
+    }
+});
 	
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
