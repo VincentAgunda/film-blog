@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-between align-items-center py-3">
+            <h1>Admin Dashboard</h1>
+            <div>
+                <span id="userInfoSpan" class="mr-3" style="display:none;"></span>
+                <button id="logoutButton" class="btn btn-danger" style="display:none;">Logout</button>
+            </div>
+        </header>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Image Management</h3>
+                <form id="imageUploadForm" class="mb-4">
+                    <div class="form-group">
+                        <label for="imageFile">Upload Image:</label>
+                        <input type="file" class="form-control-file" id="imageFile" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageDescription">Description (Optional):</label>
+                        <input type="text" class="form-control" id="imageDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="imagePage">Associated Page (e.g., homepage, services):</label>
+                        <input type="text" class="form-control" id="imagePage" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Image</button>
+                </form>
+
+                <h4>Current Images</h4>
+                <div id="imageList" class="row">
+                    </div>
+            </div>
+
+            <div class="col-md-12 mt-5">
+                <h3>Page Content Management</h3>
+                <form id="pageContentForm" class="mb-4">
+                    <div class="form-group">
+                        <label for="selectPage">Select Page to Edit:</label>
+                        <select class="form-control" id="selectPage">
+                            <option value="homepage">Homepage</option>
+                            <option value="about">About Page</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSectionName">Section Name (e.g., hero_text, services_intro):</label>
+                        <input type="text" class="form-control" id="pageSectionName" placeholder="e.g., main_heading" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pageSectionContent">Content (HTML/Text):</label>
+                        <textarea class="form-control" id="pageSectionContent" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Update Page Content</button>
+                </form>
+                <div id="pageContentStatus"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script src="js/common.js" type="module"></script>
+    <script src="js/admin.js" type="module"></script>
+</body>
+</html>
