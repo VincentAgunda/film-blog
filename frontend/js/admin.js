@@ -1,6 +1,10 @@
 import { auth, onAuthStateChanged } from './auth.js';
 import { tokenService, uiService } from './common.js';
 
+// === ADDED: Define your Backend's Base URL ===
+const BACKEND_BASE_URL = 'https://mcmuci.onrender.com'; // Your deployed backend URL
+// ===========================================
+
 class AdminDashboard {
   constructor() {
     this.initAuthListener();
@@ -40,7 +44,7 @@ class AdminDashboard {
     if (this.elements.imageUploadForm) {
       this.elements.imageUploadForm.addEventListener('submit', this.handleImageUpload.bind(this));
     }
-    
+
     if (this.elements.pageContentForm) {
       this.elements.pageContentForm.addEventListener('submit', this.handleContentSubmit.bind(this));
     }
@@ -63,10 +67,10 @@ class AdminDashboard {
   }
 
   renderImages(images) {
-    this.elements.imageList.innerHTML = images.length ? 
-      images.map(img => this.createImageCard(img)).join('') : 
+    this.elements.imageList.innerHTML = images.length ?
+      images.map(img => this.createImageCard(img)).join('') :
       '<p>No images available</p>';
-      
+
     this.addDeleteHandlers();
   }
 
@@ -104,7 +108,7 @@ class AdminDashboard {
   async handleImageUpload(e) {
     e.preventDefault();
     const formData = new FormData(this.elements.imageUploadForm);
-    
+
     try {
       await this.apiRequest('/api/admin/images', 'POST', formData);
       this.elements.imageUploadForm.reset();
@@ -123,7 +127,7 @@ class AdminDashboard {
       title: this.elements.sectionName.value,
       content: document.getElementById('pageSectionContent').value
     };
-    
+
     try {
       await this.apiRequest('/api/admin/content', 'POST', JSON.stringify(data));
       this.showStatus('Content saved successfully!', 'success');
@@ -142,12 +146,14 @@ class AdminDashboard {
     const headers = {
       'Authorization': `Bearer ${tokenService.get()}`
     };
-    
+
     if (body && !(body instanceof FormData)) {
       headers['Content-Type'] = 'application/json';
     }
 
-    return fetch(url, {
+    // === MODIFIED LINE: Prepend the base URL to the relative URL ===
+    return fetch(`${BACKEND_BASE_URL}${url}`, {
+    // =============================================================
       method,
       headers,
       body: body instanceof FormData ? body : body
