@@ -1,83 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Admin Dashboard</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>McMemuci Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/favicon.png">
+  <style>
+    :root {
+      --primary-color: #4B49AC;
+      --secondary-color: #7DA0FA;
+      --sidebar-width: 250px;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7ff;
+    }
+    
+    /* Sidebar Styles */
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: white;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+    
+    .sidebar-brand {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .sidebar-nav {
+      padding: 1rem 0;
+    }
+    
+    .nav-item {
+      margin-bottom: 0.5rem;
+    }
+    
+    .nav-link {
+      color: #6c757d;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(75, 73, 172, 0.1);
+    }
+    
+    .nav-link i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    /* Main Content Styles */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 20px;
+      transition: all 0.3s;
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      padding: 1rem 1.5rem;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    .search-box {
+      width: 300px;
+    }
+    
+    .notification-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      font-size: 10px;
+    }
+    
+    /* Card Styles */
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    
+    .card-header {
+      background: white;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+    }
+    
+    /* Form Styles */
+    .form-control, .form-select {
+      border-radius: 5px;
+      padding: 10px 15px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    /* Image Gallery */
+    .image-thumbnail {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <header class="d-flex justify-content-between align-items-center py-3">
-            <h1>Admin Dashboard</h1>
-            <div>
-                <span id="userInfoSpan" class="mr-3" style="display:none;"></span>
-                <button id="logoutButton" class="btn btn-danger" style="display:none;">Logout</button>
-            </div>
-        </header>
-        <hr>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Image Management</h3>
-                <form id="imageUploadForm" class="mb-4">
-                    <div class="form-group">
-                        <label for="imageFile">Upload Image:</label>
-                        <input type="file" class="form-control-file" id="imageFile" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageDescription">Description (Optional):</label>
-                        <input type="text" class="form-control" id="imageDescription">
-                    </div>
-                    <div class="form-group">
-                        <label for="imagePage">Associated Page (e.g., homepage, services):</label>
-                        <input type="text" class="form-control" id="imagePage" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Upload Image</button>
-                </form>
-
-                <h4>Current Images</h4>
-                <div id="imageList" class="row">
-                    </div>
-            </div>
-
-            <div class="col-md-12 mt-5">
-                <h3>Page Content Management</h3>
-                <form id="pageContentForm" class="mb-4">
-                    <div class="form-group">
-                        <label for="selectPage">Select Page to Edit:</label>
-                        <select class="form-control" id="selectPage">
-                            <option value="homepage">Homepage</option>
-                            <option value="about">About Page</option>
-                            </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="pageSectionName">Section Name (e.g., hero_text, services_intro):</label>
-                        <input type="text" class="form-control" id="pageSectionName" placeholder="e.g., main_heading" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="pageSectionContent">Content (HTML/Text):</label>
-                        <textarea class="form-control" id="pageSectionContent" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success">Update Page Content</button>
-                </form>
-                <div id="pageContentStatus"></div>
-            </div>
-        </div>
+  <div class="container-fluid">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-brand">
+        <a href="index.html" style="text-decoration: none;">
+          <img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;">
+        </a>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">
+            <i class="fas fa-home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#uploadMenu">
+            <i class="fas fa-upload"></i>
+            <span>Upload</span>
+            <i class="fas fa-chevron-down ms-auto"></i>
+          </a>
+          <div class="collapse" id="uploadMenu">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Murkell</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Memusi</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Miss Wine Bottle</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Podcast</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Shopping</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fas fa-file-alt"></i>
+            <span>Documentation</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button class="btn btn-sm d-lg-none" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <a class="navbar-brand" href="index.html">
+            <img src="images/gallery/mur.png" alt="McMemuci Logo" style="height: 60px;">
+          </a>
+          
+          <div class="d-flex align-items-center ms-auto">
+            <div class="dropdown me-3">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                English
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">French</a></li>
+                <li><a class="dropdown-item" href="#">Spanish</a></li>
+              </ul>
+            </div>
+            
+            <div class="dropdown me-3">
+              <button class="btn position-relative" id="notificationDropdown" data-bs-toggle="dropdown">
+                <i class="fas fa-bell"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  5
+                </span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" style="width: 300px;">
+                <li><h6 class="dropdown-header">You have 5 notifications</h6></li>
+                <li><a class="dropdown-item" href="#">New image uploaded</a></li>
+                <li><a class="dropdown-item" href="#">Page content updated</a></li>
+              </ul>
+            </div>
+            
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown">
+                <img src="https://via.placeholder.com/40" alt="Profile" class="rounded-circle me-2">
+                <span id="userInfoSpan">Admin</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="logoutButton"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-    <script src="js/common.js" type="module"></script>
-    <script src="js/admin.js" type="module"></script>
+      <!-- Dashboard Content -->
+      <div class="container-fluid py-4">
+        <h4 class="mb-4">Admin Dashboard</h4>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5>Image Management</h5>
+              </div>
+              <div class="card-body">
+                <form id="imageUploadForm" class="mb-4">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="imageFile" class="form-label">Upload Image</label>
+                        <input class="form-control" type="file" id="imageFile" required>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="imageDescription" class="form-label">Description (Optional)</label>
+                        <input type="text" class="form-control" id="imageDescription">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="imagePage" class="form-label">Associated Page</label>
+                        <select class="form-select" id="imagePage" required>
+                          <option value="">Select Page</option>
+                          <option value="homepage">Homepage</option>
+                          <option value="about">About Page</option>
+                          <option value="services">Services</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-upload me-2"></i>Upload Image
+                  </button>
+                </form>
+
+                <h5 class="mt-5 mb-3">Current Images</h5>
+                <div id="imageList" class="row">
+                  <!-- Images will be loaded here -->
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="https://via.placeholder.com/300x200" class="card-img-top image-thumbnail" alt="Sample Image">
+                      <div class="card-body">
+                        <h6 class="card-title">Homepage Banner</h6>
+                        <p class="card-text text-muted small">Uploaded: 2023-05-15</p>
+                        <div class="d-flex justify-content-between">
+                          <button class="btn btn-sm btn-outline-primary">Edit</button>
+                          <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 mt-4">
+            <div class="card">
+              <div class="card-header">
+                <h5>Page Content Management</h5>
+              </div>
+              <div class="card-body">
+                <form id="pageContentForm" class="mb-4">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="selectPage" class="form-label">Select Page to Edit</label>
+                        <select class="form-select" id="selectPage">
+                          <option value="homepage">Homepage</option>
+                          <option value="about">About Page</option>
+                          <option value="services">Services</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="mb-3">
+                        <label for="pageSectionName" class="form-label">Section Name</label>
+                        <input type="text" class="form-control" id="pageSectionName" placeholder="e.g., main_heading" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="pageSectionContent" class="form-label">Content (HTML/Text)</label>
+                    <textarea class="form-control" id="pageSectionContent" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save me-2"></i>Update Page Content
+                  </button>
+                  <div id="pageContentStatus" class="mt-3"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+  
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbugll6RRXT-UPZ4ipHZD-ilXLOIo7oT8",
+      authDomain: "mcmemuci-7943c.firebaseapp.com",
+      projectId: "mcmemuci-7943c",
+      storageBucket: "mcmemuci-7943c.appspot.com",
+      messagingSenderId: "614792317536",
+      appId: "1:614792317536:web:14f371fac44b65bf8dd105"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    // DOM Elements
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const logoutButton = document.getElementById('logoutButton');
+    const userInfoSpan = document.getElementById('userInfoSpan');
+    const imageUploadForm = document.getElementById('imageUploadForm');
+    const pageContentForm = document.getElementById('pageContentForm');
+    const imageList = document.getElementById('imageList');
+    const pageContentStatus = document.getElementById('pageContentStatus');
+
+    // Toggle Sidebar on Mobile
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+
+    // Check Auth State
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is signed in
+        userInfoSpan.textContent = user.email;
+        
+        // Load images
+        loadImages();
+        
+        // Load page content
+        loadPageContent();
+      } else {
+        // User is signed out
+        window.location.href = 'login.html';
+      }
+    });
+
+    // Logout Functionality
+    logoutButton.addEventListener('click', () => {
+      auth.signOut().then(() => {
+        window.location.href = 'login.html';
+      });
+    });
+
+    // Image Upload Form
+    imageUploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const file = document.getElementById('imageFile').files[0];
+      const description = document.getElementById('imageDescription').value;
+      const page = document.getElementById('imagePage').value;
+      
+      if (!file || !page) return;
+      
+      try {
+        // Upload image to Firebase Storage
+        const storageRef = storage.ref(`images/${file.name}`);
+        const snapshot = await storageRef.put(file);
+        const downloadURL = await snapshot.ref.getDownloadURL();
+        
+        // Save image info to Firestore
+        await db.collection('images').add({
+          url: downloadURL,
+          description: description,
+          page: page,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        
+        alert('Image uploaded successfully!');
+        imageUploadForm.reset();
+        loadImages();
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        alert('Error uploading image: ' + error.message);
+      }
+    });
+
+    // Page Content Form
+    pageContentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const page = document.getElementById('selectPage').value;
+      const section = document.getElementById('pageSectionName').value;
+      const content = document.getElementById('pageSectionContent').value;
+      
+      try {
+        // Save page content to Firestore
+        await db.collection('pageContent').doc(`${page}_${section}`).set({
+          page: page,
+          section: section,
+          content: content,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        
+        pageContentStatus.innerHTML = `
+          <div class="alert alert-success">
+            Content updated successfully!
+          </div>
+        `;
+        
+        setTimeout(() => {
+          pageContentStatus.innerHTML = '';
+        }, 3000);
+      } catch (error) {
+        console.error('Error updating content:', error);
+        pageContentStatus.innerHTML = `
+          <div class="alert alert-danger">
+            Error updating content: ${error.message}
+          </div>
+        `;
+      }
+    });
+
+    // Load Images from Firestore
+    async function loadImages() {
+      try {
+        const snapshot = await db.collection('images').orderBy('createdAt', 'desc').get();
+        imageList.innerHTML = '';
+        
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          imageList.innerHTML += `
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <img src="${data.url}" class="card-img-top image-thumbnail" alt="${data.description || 'Image'}">
+                <div class="card-body">
+                  <h6 class="card-title">${data.description || 'No Description'}</h6>
+                  <p class="card-text text-muted small">Page: ${data.page}</p>
+                  <div class="d-flex justify-content-between">
+                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteImage('${doc.id}')">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      } catch (error) {
+        console.error('Error loading images:', error);
+      }
+    }
+
+    // Load Page Content from Firestore
+    async function loadPageContent() {
+      try {
+        const page = document.getElementById('selectPage').value;
+        const snapshot = await db.collection('pageContent').where('page', '==', page).get();
+        
+        if (!snapshot.empty) {
+          const firstDoc = snapshot.docs[0].data();
+          document.getElementById('pageSectionName').value = firstDoc.section;
+          document.getElementById('pageSectionContent').value = firstDoc.content;
+        }
+      } catch (error) {
+        console.error('Error loading page content:', error);
+      }
+    }
+
+    // Delete Image
+    async function deleteImage(id) {
+      if (confirm('Are you sure you want to delete this image?')) {
+        try {
+          await db.collection('images').doc(id).delete();
+          loadImages();
+        } catch (error) {
+          console.error('Error deleting image:', error);
+          alert('Error deleting image: ' + error.message);
+        }
+      }
+    }
+
+    // When page selection changes, load new content
+    document.getElementById('selectPage').addEventListener('change', loadPageContent);
+  </script>
 </body>
 </html>

@@ -8462,3 +8462,42 @@ img{
     text-transform: uppercase;
     font-family: 'Open Sans', sans-serif;
 }
+/* User dropdown styles */
+#userDropdown {
+    color: inherit;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+}
+
+#userDropdown:hover {
+    color: #007bff;
+}
+
+.dropdown-menu {
+    min-width: 120px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+}
+/* Add to your CSS file */
+#userDropdown i {
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+#userDropdown .text-success {
+    color: #28a745 !important; /* Green for logged in */
+}
+
+#userDropdown .text-primary {
+    color: #007bff !important; /* Blue for admin */
+}

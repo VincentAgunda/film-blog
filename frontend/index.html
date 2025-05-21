@@ -8,13 +8,68 @@
 <link href="css/responsive.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+<style>
+    /* User Dropdown Styles */
+    #userDropdown {
+        color: inherit;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+    }
+    
+    #userDropdown:hover {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    .dropdown-menu {
+        min-width: 150px;
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #007bff;
+    }
+    
+    #userDropdown i {
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        margin-right: 5px;
+    }
+    
+    .text-success {
+        color: #28a745 !important;
+    }
+    
+    .text-primary {
+        color: #007bff !important;
+    }
+    
+    /* Adjust header top for dropdown */
+    .header-top .info-list {
+        display: flex;
+        align-items: center;
+    }
+    
+    .header-top .dropdown {
+        margin-left: 15px;
+    }
+</style>
 </head>
 
 <body>
@@ -31,11 +86,30 @@
                     <div class="text"><span class="icon flaticon-call-answer"></span> Contact Us: <a href="tel:+254708773943" class="number">+254 708 773 943</a></div>
                 </div>
                 <div class="top-right clearfix">
-                    <!-- Info List -->
                     <ul class="info-list">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="index-6.html">Our Ventures</a></li>
+                        
+                        
                         <li class="quote"><a href="contact.html">Get In Touch</a></li>
+                        
+                        <!-- User Dropdown Menu -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                                <span class="d-none d-md-inline">Account</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="login.html" id="loginDropdownLink">
+                                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                                </a>
+                                <a class="dropdown-item" href="#" id="logoutDropdownLink" style="display: none;">
+                                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                </a>
+                                <div class="dropdown-divider" id="adminDivider" style="display: none;"></div>
+                                <a class="dropdown-item" href="admin-dashboard.html" id="adminDashboardDropdownLink" style="display: none;">
+                                    <i class="fas fa-tachometer-alt mr-2"></i>Admin Dashboard
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +122,8 @@
                 <div class="auto-container clearfix">
                     <!--Info-->
                     <div class="logo-outer">
-                        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="McMemuci Group Logo" title="McMemuci Group"></a></div>
+                        <div class="logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
+                        
                     </div>
 
                     <!--Nav Box-->
@@ -64,12 +139,12 @@
                             
                             <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="index.html">Home</a></li>									
+                                    <li class="current"><a href="index.html">Home</a></li>	
+                                    								
                                     <li class="dropdown"><a href="about.html">About</a>
                                         <ul>
                                             <li><a href="about.html">Our Story</a></li>
                                             <li><a href="testimonials.html">Testimonials</a></li>
-                                           
                                         </ul>
                                     </li>
                                     <li class="dropdown"><a href="#">Our Ventures</a>
@@ -78,12 +153,10 @@
                                                 <ul>
                                                     <li><a href="index-6.html">Media Production</a></li>
                                                     <li><a href="index-6.html">Murkell TV</a></li>
-                                                    
                                                 </ul>
                                             </li>
                                             <li class="dropdown"><a href="index-6.html">McMemuci Group Ltd</a>
                                                 <ul>
-                                                   
                                                     <li><a href="index-6.html">Hospitality</a></li>
                                                     <li><a href="index-6.html">Fashion & Beauty</a></li>
                                                 </ul>
@@ -127,7 +200,7 @@
                 <div class="social-links">
                     <ul class="clearfix">
                         <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                        <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-square"></span></a></li>
                         <li><a href="#"><span class="fab fa-instagram"></span></a></li>
                         <li><a href="#"><span class="fab fa-youtube"></span></a></li>
                         <li><a href="#"><span class="fab fa-linkedin"></span></a></li>
@@ -135,7 +208,6 @@
                 </div>
             </nav>
         </div><!-- End Mobile Menu -->
-
     </header>
     <!-- End Main Header -->
 
@@ -154,7 +226,7 @@
                             <h2>Enhancing Everyday Life Through Our Ventures</h2>
                             <div class="text">McMemuci Group is a diversified enterprise committed to excellence in media, real estate, hospitality, and lifestyle ventures across Kenya.</div>
                             <div class="btns-box">
-                                <a href="about.html" class="theme-btn btn-style-one"><span class="txt">Discover More</span></a>
+                                <a href="index-6.html" class="theme-btn btn-style-one"><span class="txt">Discover More</span></a>
                             </div>
                         </div>
                     </div>
@@ -208,15 +280,15 @@
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="image">
-                            <a href="murkell-media.html"><img src="images/resource/service-1.jpg" alt="Murkell Media House" /></a>
+                            <a href="index-6.html"><img src="images/resource/service-1.jpg" alt="Murkell Media House" /></a>
                             <button class="like-button">
                                 <i class="far fa-heart"></i>
                             </button>
                         </div>
                         <div class="lower-content">
-                            <h3><a href="murkell-media.html">Murkell Media House</a></h3>
+                            <h3><a href="index-6.html">Murkell Media House</a></h3>
                             <div class="text">A premier media production company specializing in TV content, digital media, and creative storytelling that captivates audiences.</div>
-                            <a href="murkell-media.html" class="read-more">Explore Venture</a>
+                            <a href="index-6.html" class="read-more">Explore Venture</a>
                         </div>
                     </div>
                 </div>
@@ -225,15 +297,15 @@
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="image">
-                            <a href="mcmemuci-group.html"><img src="images/resource/service-2.jpg" alt="McMemuci Group" /></a>
+                            <a href="index-6.html"><img src="images/resource/service-2.jpg" alt="McMemuci Group" /></a>
                             <button class="like-button">
                                 <i class="far fa-heart"></i>
                             </button>
                         </div>
                         <div class="lower-content">
-                            <h3><a href="mcmemuci-group.html">McMemuci Group Ltd</a></h3>
+                            <h3><a href="index-6.html">McMemuci Group Ltd</a></h3>
                             <div class="text">Diversified holdings in real estate development, hospitality ventures, and lifestyle brands that enhance urban living.</div>
-                            <a href="mcmemuci-group.html" class="read-more">Explore Venture</a>
+                            <a href="index-6.html" class="read-more">Explore Venture</a>
                         </div>
                     </div>
                 </div>
@@ -242,15 +314,15 @@
                 <div class="service-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                         <div class="image">
-                            <a href="wine-bottle.html"><img src="images/resource/service-3.jpg" alt="Miss Wine Bottle" /></a>
+                            <a href="index-6.html"><img src="images/resource/service-3.jpg" alt="Miss Wine Bottle" /></a>
                             <button class="like-button">
                                 <i class="far fa-heart"></i>
                             </button>
                         </div>
                         <div class="lower-content">
-                            <h3><a href="wine-bottle.html">Miss Wine Bottle Ltd</a></h3>
+                            <h3><a href="index-6.html">Miss Wine Bottle Ltd</a></h3>
                             <div class="text">Premium wine importation and curated tasting experiences that celebrate the art of viticulture and oenology.</div>
-                            <a href="wine-bottle.html" class="read-more">Explore Venture</a>
+                            <a href="index-6.html" class="read-more">Explore Venture</a>
                         </div>
                     </div>
                 </div>
@@ -306,9 +378,9 @@
                             <div class="icon-box">
                                 <span class="icon flaticon-shop"></span>
                             </div>
-                            <h3><a href="philanthropy.html">Community</a></h3>
+                            <h3><a href="index-6.html">Community</a></h3>
                             <div class="text">We're committed to creating positive social impact through our business operations and philanthropic initiatives.</div>
-                            <a href="philanthropy.html" class="read-more">Our Impact</a>
+                            <a href="index-6.html" class="read-more">Our Impact</a>
                         </div>
                     </div>
                 </div>
@@ -356,9 +428,9 @@
                                 <div class="overlay-box">
                                     <div class="overlay-inner">
                                         <div class="content">
-                                            <h3><a href="murkell-tv.html">Murkell TV Studio</a></h3>
+                                            <h3><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE">Murkell TV Studio</a></h3>
                                             <a href="images/gallery/1.jpg" data-fancybox="gallery-1" data-caption="Murkell TV Studio" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-                                            <a href="murkell-tv.html" class="link"><span class="icon flaticon-unlink"></span></a>
+                                            <a href="index-6.html" class="link"><span class="icon flaticon-unlink"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -375,9 +447,9 @@
                                 <div class="overlay-box">
                                     <div class="overlay-inner">
                                         <div class="content">
-                                            <h3><a href="real-estate.html">Nairobi Heights</a></h3>
-                                            <a href="images/gallery/2.jpg" data-fancybox="gallery-1" data-caption="Nairobi Heights" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-                                            <a href="real-estate.html" class="link"><span class="icon flaticon-unlink"></span></a>
+                                            <h3><a href="#">Nairobi Heights</a></h3>
+                                            <a href="#" data-fancybox="gallery-1" data-caption="Nairobi Heights" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
+                                            <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -394,9 +466,9 @@
                                 <div class="overlay-box">
                                     <div class="overlay-inner">
                                         <div class="content">
-                                            <h3><a href="hospitality.html">Safari Boutique Hotel</a></h3>
+                                            <h3><a href="#">Safari Boutique Hotel</a></h3>
                                             <a href="images/gallery/3.jpg" data-fancybox="gallery-1" data-caption="Safari Boutique Hotel" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-                                            <a href="hospitality.html" class="link"><span class="icon flaticon-unlink"></span></a>
+                                            <a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -413,9 +485,9 @@
                                 <div class="overlay-box">
                                     <div class="overlay-inner">
                                         <div class="content">
-                                            <h3><a href="wine-events.html">Annual Wine Gala</a></h3>
+                                            <h3><a href="index-6.html">Annual Wine Gala</a></h3>
                                             <a href="images/gallery/4.jpg" data-fancybox="gallery-1" data-caption="Annual Wine Gala" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-                                            <a href="wine-events.html" class="link"><span class="icon flaticon-unlink"></span></a>
+                                            <a href="index-6.html" class="link"><span class="icon flaticon-unlink"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -432,9 +504,9 @@
                                 <div class="overlay-box">
                                     <div class="overlay-inner">
                                         <div class="content">
-                                            <h3><a href="content-creation.html">Documentary Production</a></h3>
+                                            <h3><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE">Documentary Production</a></h3>
                                             <a href="images/gallery/7.jpg" data-fancybox="gallery-1" data-caption="Documentary Production" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-                                            <a href="content-creation.html" class="link"><span class="icon flaticon-unlink"></span></a>
+                                            <a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE" class="link"><span class="icon flaticon-unlink"></span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -495,8 +567,6 @@
             
         </div>
     </section>
-    
-    
     
     <!-- Business Approach Section -->
     <section class="featured-section" style="background-image: url(images/background/2.jpg)">
@@ -577,72 +647,6 @@
     </section>
     <!-- End Business Approach Section -->
     
-    <!-- News & Updates Section -->
-    <section class="news-section">
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title">
-                <h2>Latest News & Updates</h2>
-                <div class="text">Stay informed about our ventures, industry insights, and upcoming events</div>
-            </div>
-            
-            <div class="row clearfix">
-                
-                <!-- News Block 1 -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <a href="news-detail.html"><img src="images/resource/news-1.jpg" alt="New Real Estate Launch" /></a>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="post-meta">
-                                <li>June 15, 2023</li>
-                                <li>Real Estate</li>
-                            </ul>
-                            <h3><a href="news-detail.html">McMemuci Group Launches Eco-Friendly Residential Complex in Karen</a></h3>
-                            <a href="news-detail.html" class="read-more">Read more <span class="icon flaticon-right-arrow-1"></span></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- News Block 2 -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInRight" data-wow-delay="250ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <a href="news-detail.html"><img src="images/resource/news-2.jpg" alt="Murkell TV Award" /></a>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="post-meta">
-                                <li>May 28, 2023</li>
-                                <li>Media</li>
-                            </ul>
-                            <h3><a href="news-detail.html">Murkell TV Wins Best Documentary at Kalasha Awards 2023</a></h3>
-                            <a href="news-detail.html" class="read-more">Read more <span class="icon flaticon-right-arrow-1"></span></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- News Block 3 -->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box wow fadeInRight" data-wow-delay="500ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <a href="news-detail.html"><img src="images/resource/news-3.jpg" alt="Wine Festival" /></a>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="post-meta">
-                                <li>May 10, 2023</li>
-                                <li>Wine Events</li>
-                            </ul>
-                            <h3><a href="news-detail.html">Annual Wine Festival Sets New Attendance Record</a></h3>
-                            <a href="news-detail.html" class="read-more">Read more <span class="icon flaticon-right-arrow-1"></span></a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-    <!-- End News Section -->
     
     <!-- Call To Action Section -->
     <section class="call-to-action-section" style="background-image: url(images/background/1.jpg)">
@@ -651,7 +655,7 @@
             <div class="text">Explore opportunities across our diverse business ventures. <br> Let's create value together.</div>
             <div class="btns-box">
                 <a href="contact.html" class="theme-btn btn-style-two"><span class="txt">Get In Touch</span></a>
-                <a href="careers.html" class="theme-btn btn-style-one"><span class="txt">Careers</span></a>
+                <a href="#" class="theme-btn btn-style-one"><span class="txt">Careers</span></a>
             </div>
         </div>
     </section>
@@ -672,15 +676,15 @@
                             <div class="footer-column col-lg-7 col-md-6 col-sm-12">
                                 <div class="footer-widget logo-widget">
                                     <div class="logo">
-                                        <a href="index.html"><img src="images/footer-logo.png" alt="McMemuci Group" /></a>
+                                        <a href="index.html"><img src="images/gallery/mur.png" alt="McMemuci Logo" style="height: 60px;">
+                                        
                                     </div>
                                     <div class="text">McMemuci Group is a diversified enterprise with ventures in media, real estate, hospitality, and lifestyle sectors across East Africa.</div>
                                     <ul class="social-icons">
-                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                                        <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-f"></span></a></li>
+                                        <li><a href="https://www.instagram.com/cmemuci?igsh=cmw2d2F6YzVjNmRq"><span class="fab fa-instagram"></span></a></li>
+                                        <li><a href="https://www.linkedin.com/in/murkell-media-house-360106216/?originalSubdomain=ke"><span class="fab fa-linkedin-in"></span></a></li>
+                                        <li><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE"><span class="fab fa-youtube"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -692,9 +696,9 @@
                                     <div class="widget-content">
                                         <ul class="list">
                                             <li><a href="about.html">About Us</a></li>
-                                            <li><a href="murkell-media.html">Media Ventures</a></li>
-                                            <li><a href="real-estate.html">Real Estate</a></li>
-                                            <li><a href="wine-bottle.html">Wine Portfolio</a></li>
+                                            <li><a href="index-6.html">Media Ventures</a></li>
+                                            
+                                            <li><a href="index-6.html">Wine Portfolio</a></li>
                                             <li><a href="contact.html">Contact</a></li>
                                         </ul>
                                     </div>
@@ -717,7 +721,7 @@
                                         <ul>
                                             <li>McMemuci Group Headquarters</li>
                                             <li>Nairobi, Kenya</li>
-                                            <li>Email: <a href="mailto:info@mcmemuci.com">info@mcmemuci.com</a></li>
+                                            <li>Email: <a href="mailto:CmemuciKE@gmail.com">CmemuciKE@gmail.com</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -749,7 +753,7 @@
             <!--Footer Bottom-->
             <div class="footer-bottom clearfix">
                 <div class="pull-left">
-                    <div class="copyright">&copy; 2023 McMemuci Group. All Rights Reserved.</div>
+                    <div class="copyright">&copy; 2025 McMemuci Group. All Rights Reserved.</div>
                 </div>
                 <div class="pull-right">
                     <a href="privacy-policy.html">Privacy Policy</a> | 
@@ -784,11 +788,11 @@
             <br>
             <h3>Recent Search Keywords</h3>
             <ul class="recent-searches">
-                <li><a href="murkell-media.html">Murkell Media</a></li>
-                <li><a href="real-estate.html">Nairobi Apartments</a></li>
-                <li><a href="wine-bottle.html">Wine Importers</a></li>
-                <li><a href="blog.html">Business News</a></li>
-                <li><a href="careers.html">Career Opportunities</a></li>
+                <li><a href="#">Murkell Media</a></li>
+                <li><a href="#">Nairobi Apartments</a></li>
+                <li><a href="#">Wine Importers</a></li>
+                <li><a href="#">Business News</a></li>
+                <li><a href="#">Career Opportunities</a></li>
             </ul>
         
         </div>
@@ -796,7 +800,7 @@
     </div>
 </div>
 
-<!--Scroll to top-->
+<!--Scripts-->
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/jquery-ui.js"></script>
@@ -808,5 +812,9 @@
 <script src="js/appear.js"></script>
 <script src="js/scrollbar.js"></script>
 <script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="js/auth.js"></script>
+<script src="js/common.js"></script>
+
 </body>
 </html>

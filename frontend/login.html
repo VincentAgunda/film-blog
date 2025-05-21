@@ -7,15 +7,14 @@
 <link href="css/style.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 <style>
-    /* Basic styling for the message div (can be further styled in your CSS files) */
+    /* Basic styling for the message div */
     .alert {
         margin-top: 15px;
         transition: opacity 0.3s ease-in-out;
@@ -26,8 +25,29 @@
     .is-valid {
         border-color: #28a745 !important;
     }
+    
+    /* Password toggle styles */
+    .password-input-group {
+        position: relative;
+    }
+    .password-toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #6c757d;
+        cursor: pointer;
+        z-index: 5;
+    }
+    .password-toggle:hover {
+        color: #495057;
+    }
+    .password-toggle:focus {
+        outline: none;
+    }
 </style>
-
 </head>
 <body>
     <div class="container">
@@ -47,7 +67,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="loginPassword">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" name="password" required>
+                                <div class="password-input-group">
+                                    <input type="password" class="form-control" id="loginPassword" name="password" required>
+                                    <button type="button" class="password-toggle" id="togglePassword">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="form-group form-check">
@@ -192,8 +217,6 @@
 </div>
 
 <script src="js/jquery.js"></script>
-<script src="js/common.js" type="module"></script>
-<script src="js/auth.js" type="module"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -204,5 +227,25 @@
 <script src="js/appear.js"></script>
 <script src="js/scrollbar.js"></script>
 <script src="js/script.js"></script>
+<script src="js/common.js" type="module"></script>
+<script src="js/auth.js" type="module"></script>
+
+<script>
+    // Password toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#loginPassword');
+        
+        togglePassword.addEventListener('click', function() {
+            // Toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            
+            // Toggle the eye icon
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+    });
+</script>
 </body>
 </html>

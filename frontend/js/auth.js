@@ -5,6 +5,7 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
@@ -23,7 +24,6 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const storage = getStorage(firebaseApp);
 
 // Initialize Firebase Authentication and get a reference to the service
-// *** IMPORTANT: Added 'export' here to make 'auth' accessible to other modules ***
 export const auth = getAuth(firebaseApp);
 
 // --- Helper function to display messages ---
@@ -31,63 +31,111 @@ function showMessage(elementId, message, type = 'danger') {
     const messageDiv = document.getElementById(elementId);
     if (messageDiv) {
         messageDiv.textContent = message;
-        messageDiv.className = `alert alert-${type}`; // Use Bootstrap alert classes
+        messageDiv.className = `alert alert-${type}`;
         messageDiv.classList.remove('d-none');
-        // Hide message after a few seconds, unless it's a success message that leads to redirect.
-        // For success messages with redirect, the timeout is handled before redirect.
         if (type !== 'success') {
             setTimeout(() => {
                 messageDiv.classList.add('d-none');
-                messageDiv.textContent = ''; // Clear text
+                messageDiv.textContent = '';
             }, 5000);
         }
     }
 }
 
-// --- Check Auth State on Page Load (e.g., to redirect based on login status/role) ---
-// This listener can be used on any page that needs to know if a user is logged in
-// and what their role is (e.g., admin_dashboard.html, index.html).
-onAuthStateChanged(auth, async (user) => {
+// --- Update UI based on auth state ---
+function updateAuthUI(user) {
+    const loginDropdownLink = document.getElementById('loginDropdownLink');
+    const logoutDropdownLink = document.getElementById('logoutDropdownLink');
+    const adminDashboardDropdownLink = document.getElementById('adminDashboardDropdownLink');
+    const userDropdown = document.getElementById('userDropdown');
+    
     if (user) {
         // User is signed in
-        // Get the ID token result to check custom claims
-        const idTokenResult = await user.getIdTokenResult(true); // 'true' forces a token refresh to get latest claims
+        if (loginDropdownLink) loginDropdownLink.style.display = 'none';
+        if (logoutDropdownLink) logoutDropdownLink.style.display = 'block';
+        
+        // Update user icon with logged-in state
+        if (userDropdown) {
+            userDropdown.innerHTML = '<i class="fas fa-user-circle text-success"></i>';
+        }
+
+        // Check if user is admin and show/hide admin dashboard link
+        user.getIdTokenResult().then((idTokenResult) => {
+            if (idTokenResult.claims.admin) {
+                console.log('User is an admin');
+                if (adminDashboardDropdownLink) {
+                    adminDashboardDropdownLink.style.display = 'block';
+                    // Update icon for admin users
+                    if (userDropdown) {
+                        userDropdown.innerHTML = '<i class="fas fa-user-shield text-primary"></i>';
+                    }
+                }
+            } else if (adminDashboardDropdownLink) {
+                adminDashboardDropdownLink.style.display = 'none';
+            }
+        }).catch(error => {
+            console.error("Error getting ID token result:", error);
+        });
+    } else {
+        // User is signed out
+        if (loginDropdownLink) loginDropdownLink.style.display = 'block';
+        if (logoutDropdownLink) logoutDropdownLink.style.display = 'none';
+        if (adminDashboardDropdownLink) adminDashboardDropdownLink.style.display = 'none';
+        
+        // Update user icon with logged-out state
+        if (userDropdown) {
+            userDropdown.innerHTML = '<i class="fas fa-user-circle"></i>';
+        }
+    }
+}
+
+// --- Handle logout ---
+function setupLogout() {
+    const logoutDropdownLink = document.getElementById('logoutDropdownLink');
+    if (logoutDropdownLink) {
+        logoutDropdownLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error("Logout error:", error);
+                showMessage('message', 'Error during logout. Please try again.', 'danger');
+            }
+        });
+    }
+}
+
+// --- Check Auth State on Page Load ---
+onAuthStateChanged(auth, async (user) => {
+    updateAuthUI(user);
+    
+    if (user) {
+        // User is signed in
+        const idTokenResult = await user.getIdTokenResult(true);
 
         if (idTokenResult.claims.admin) {
-            // User is an admin
             console.log('User is an admin.');
-            // If on a regular page, you might redirect to admin dashboard,
-            // or show admin-specific UI elements.
-            // Example for admin_dashboard.html: If not on admin_dashboard.html, redirect there
             if (window.location.pathname.endsWith('login.html') || window.location.pathname.endsWith('register.html')) {
-                // If the user logs in as admin, they will be redirected by the form handler.
-                // This 'onAuthStateChanged' listener would typically handle redirections
-                // for users who are already logged in when they navigate to a page.
-                // For instance, if a logged-in admin tries to go to login.html, they could be redirected.
-            } else if (!window.location.pathname.endsWith('admin-dashboard.html')) {
-                    // If a user is already logged in as admin and not on the admin dashboard, redirect them
-                    // This ensures protected admin pages are handled correctly.
-                    // window.location.href = 'admin-dashboard.html';
+                window.location.href = 'admin-dashboard.html';
             }
-
         } else {
-            // User is a regular user
             console.log('User is a regular user.');
-            // If a regular user tries to access admin-dashboard.html, redirect them away
             if (window.location.pathname.endsWith('admin-dashboard.html')) {
-                // window.location.href = 'index.html'; // Or to a 'not authorized' page
+                window.location.href = 'index.html';
             }
         }
     } else {
-        // User is signed out or not logged in
+        // User is signed out
         console.log('No user is signed in.');
-        // If on a protected page (like admin_dashboard.html), redirect to login
         if (window.location.pathname.endsWith('admin-dashboard.html')) {
-            // window.location.href = 'login.html';
+            window.location.href = 'login.html';
         }
     }
 });
 
+// Initialize logout functionality
+setupLogout();
 
 // --- Register Form Handling ---
 const registerForm = document.getElementById('registerForm');
@@ -102,7 +150,6 @@ if (registerForm) {
             input.classList.remove('is-invalid', 'is-valid');
         });
         document.getElementById('terms').classList.remove('is-invalid', 'is-valid');
-
 
         const email = registerForm.elements['email'].value;
         const password = registerForm.elements['password'].value;
@@ -144,7 +191,6 @@ if (registerForm) {
                 showMessage('message', `Registration successful! Redirecting to login...`, 'success');
                 registerForm.reset();
 
-                // Redirect to login page after successful registration
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 2000);
@@ -174,7 +220,6 @@ if (registerForm) {
     });
 }
 
-
 // --- Login Form Handling ---
 const loginForm = document.getElementById('loginForm');
 const loginMessageDiv = document.getElementById('message');
@@ -188,7 +233,7 @@ if (loginForm) {
             input.classList.remove('is-invalid', 'is-valid');
         });
 
-        const email = loginForm.elements['uname'].value; // 'uname' is used for email on login page
+        const email = loginForm.elements['uname'].value;
         const password = loginForm.elements['loginPassword'].value;
 
         let isValid = true;
@@ -215,20 +260,19 @@ if (loginForm) {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
 
-                // After successful login, force refresh token to get latest claims
                 const idTokenResult = await user.getIdTokenResult(true);
 
                 if (idTokenResult.claims.admin) {
                     showMessage('message', `Admin login successful! Welcome, ${user.email}. Redirecting to admin dashboard...`, 'success');
                     loginForm.reset();
                     setTimeout(() => {
-                        window.location.href = 'admin-dashboard.html'; // Redirect to your admin page
+                        window.location.href = 'admin-dashboard.html';
                     }, 2000);
                 } else {
                     showMessage('message', `Login successful! Welcome, ${user.email}. Redirecting to home...`, 'success');
                     loginForm.reset();
                     setTimeout(() => {
-                        window.location.href = 'index.html'; // Redirect to your regular home page
+                        window.location.href = 'index.html';
                     }, 2000);
                 }
 
@@ -253,3 +297,8 @@ if (loginForm) {
         }
     });
 }
+
+// Initialize auth UI on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateAuthUI(auth.currentUser);
+});

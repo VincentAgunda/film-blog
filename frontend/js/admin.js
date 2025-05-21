@@ -1,15 +1,17 @@
 import { auth, onAuthStateChanged } from './auth.js';
 import { tokenService, uiService } from './common.js';
 
-// === ADDED: Define your Backend's Base URL ===
-const BACKEND_BASE_URL = 'https://mcmuci.onrender.com'; // Your deployed backend URL
-// ===========================================
+const BACKEND_BASE_URL = 'https://mcmuci.onrender.com';
 
 class AdminDashboard {
   constructor() {
+    this.currentPage = null;
+    this.currentSection = null;
+    this.pages = [];
     this.initAuthListener();
     this.cacheElements();
     this.initEventListeners();
+    this.loadPages();
   }
 
   initAuthListener() {
@@ -36,7 +38,9 @@ class AdminDashboard {
       pageContentForm: document.getElementById('pageContentForm'),
       contentStatus: document.getElementById('pageContentStatus'),
       selectPage: document.getElementById('selectPage'),
-      sectionName: document.getElementById('pageSectionName')
+      sectionName: document.getElementById('pageSectionName'),
+      sectionContent: document.getElementById('pageSectionContent'),
+      newSectionName: document.getElementById('newSectionName')
     };
   }
 
@@ -48,112 +52,163 @@ class AdminDashboard {
     if (this.elements.pageContentForm) {
       this.elements.pageContentForm.addEventListener('submit', this.handleContentSubmit.bind(this));
     }
+
+    if (this.elements.selectPage) {
+      this.elements.selectPage.addEventListener('change', () => {
+        this.currentPage = this.elements.selectPage.value;
+        this.loadPageSections();
+      });
+    }
+
+    if (this.elements.sectionName) {
+      this.elements.sectionName.addEventListener('change', () => {
+        this.currentSection = this.elements.sectionName.value;
+        this.loadSectionContent();
+      });
+    }
   }
 
   initDashboard() {
     uiService.updateHeader();
     this.loadImages();
-    this.loadPageContent();
   }
 
-  async loadImages() {
+  async loadPages() {
     try {
-      const response = await this.apiRequest('/api/admin/images');
-      this.renderImages(await response.json());
+      const response = await this.apiRequest('/api/content');
+      this.pages = await response.json();
+      this.populatePageDropdown();
     } catch (error) {
-      console.error('Failed to load images:', error);
-      this.elements.imageList.innerHTML = '<p class="text-danger">Failed to load images</p>';
+      console.error('Failed to load pages:', error);
+      this.showStatus('Failed to load pages', 'danger');
     }
   }
 
-  renderImages(images) {
-    this.elements.imageList.innerHTML = images.length ?
-      images.map(img => this.createImageCard(img)).join('') :
-      '<p>No images available</p>';
-
-    this.addDeleteHandlers();
-  }
-
-  createImageCard(image) {
-    return `
-      <div class="col-md-3 mb-4">
-        <div class="card h-100">
-          <img src="${image.url}" class="card-img-top" alt="${image.description}" style="height: 150px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">${image.filename.substring(0, 20)}...</h5>
-            <p class="card-text">${image.description || 'No description'}</p>
-            <button class="btn btn-danger btn-sm delete-btn" data-id="${image._id}">Delete</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  addDeleteHandlers() {
-    document.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        if (confirm('Are you sure?')) {
-          try {
-            await this.apiRequest(`/api/admin/images/${e.target.dataset.id}`, 'DELETE');
-            this.loadImages();
-          } catch (error) {
-            console.error('Delete failed:', error);
-            alert('Failed to delete image');
-          }
-        }
-      });
+  populatePageDropdown() {
+    const selectPage = this.elements.selectPage;
+    selectPage.innerHTML = '<option value="">Select a Page</option>';
+    
+    this.pages.forEach(page => {
+      const option = document.createElement('option');
+      option.value = page.pageName;
+      option.textContent = this.formatName(page.pageName);
+      selectPage.appendChild(option);
     });
   }
 
-  async handleImageUpload(e) {
-    e.preventDefault();
-    const formData = new FormData(this.elements.imageUploadForm);
-
+  async loadPageSections() {
+    if (!this.currentPage) return;
+    
     try {
-      await this.apiRequest('/api/admin/images', 'POST', formData);
-      this.elements.imageUploadForm.reset();
-      this.loadImages();
-      uiService.showMessage('message', 'Image uploaded successfully!', 'success');
+      const page = this.pages.find(p => p.pageName === this.currentPage) || 
+                   await this.apiRequest(`/api/content/${this.currentPage}`).then(res => res.json());
+      
+      this.populateSectionDropdown(page?.sections || []);
+      this.elements.sectionContent.value = '';
     } catch (error) {
-      console.error('Upload failed:', error);
-      uiService.showMessage('message', 'Failed to upload image', 'danger');
+      console.error('Failed to load sections:', error);
+      this.showStatus('Failed to load sections', 'danger');
+    }
+  }
+
+  populateSectionDropdown(sections) {
+    const sectionName = this.elements.sectionName;
+    sectionName.innerHTML = '<option value="">Select a Section</option>';
+    
+    sections.forEach(section => {
+      const option = document.createElement('option');
+      option.value = section.sectionName;
+      option.textContent = this.formatName(section.sectionName);
+      sectionName.appendChild(option);
+    });
+    
+    // Add option to create new section
+    const newOption = document.createElement('option');
+    newOption.value = 'new';
+    newOption.textContent = '+ Create New Section';
+    sectionName.appendChild(newOption);
+  }
+
+  async loadSectionContent() {
+    if (!this.currentPage || !this.currentSection || this.currentSection === 'new') {
+      this.elements.sectionContent.value = '';
+      return;
+    }
+    
+    try {
+      const page = this.pages.find(p => p.pageName === this.currentPage);
+      const section = page?.sections.find(s => s.sectionName === this.currentSection);
+      
+      if (section) {
+        this.elements.sectionContent.value = section.content;
+      }
+    } catch (error) {
+      console.error('Failed to load section content:', error);
     }
   }
 
   async handleContentSubmit(e) {
     e.preventDefault();
-    const data = {
-      pageName: this.elements.selectPage.value,
-      title: this.elements.sectionName.value,
-      content: document.getElementById('pageSectionContent').value
-    };
-
+    
+    const pageName = this.elements.selectPage.value;
+    let sectionName = this.elements.sectionName.value;
+    const content = this.elements.sectionContent.value;
+    
+    if (sectionName === 'new') {
+      sectionName = this.elements.newSectionName.value;
+    }
+    
+    if (!pageName || !sectionName || !content) {
+      this.showStatus('Please fill all fields', 'danger');
+      return;
+    }
+    
     try {
-      await this.apiRequest('/api/admin/content', 'POST', JSON.stringify(data));
+      const response = await this.apiRequest('/api/content', 'POST', JSON.stringify({
+        pageName,
+        sectionName,
+        content
+      }));
+      
+      const result = await response.json();
       this.showStatus('Content saved successfully!', 'success');
+      
+      // Refresh the page and section data
+      this.loadPages();
+      this.elements.newSectionName.value = '';
     } catch (error) {
       console.error('Content save failed:', error);
       this.showStatus('Failed to save content', 'danger');
     }
   }
 
+  // ... (keep existing image handling methods)
+
+  formatName(name) {
+    return name.split(/[-_]/).map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  }
+
   showStatus(message, type) {
     this.elements.contentStatus.textContent = message;
     this.elements.contentStatus.className = `alert alert-${type}`;
+    setTimeout(() => {
+      this.elements.contentStatus.textContent = '';
+      this.elements.contentStatus.className = '';
+    }, 5000);
   }
 
   apiRequest(url, method = 'GET', body = null) {
     const headers = {
       'Authorization': `Bearer ${tokenService.get()}`
     };
-
+    
     if (body && !(body instanceof FormData)) {
       headers['Content-Type'] = 'application/json';
     }
 
-    // === MODIFIED LINE: Prepend the base URL to the relative URL ===
     return fetch(`${BACKEND_BASE_URL}${url}`, {
-    // =============================================================
       method,
       headers,
       body: body instanceof FormData ? body : body
@@ -168,5 +223,4 @@ class AdminDashboard {
   }
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => new AdminDashboard());
