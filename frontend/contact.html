@@ -12,349 +12,411 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your Public Key
+        (function() {
+            emailjs.init("5o7FSKFsm9NBOkGZp"); // Your Public Key
+        })();
+    </script>
 </head>
 
 <body>
 
-<div class="page-wrapper">
-    <!-- Preloader -->
-    <div class="preloader"></div>
+    <div class="page-wrapper">
+        <div class="preloader"></div>
 
-    <!-- Header Section -->
-    <header class="main-header header-style-one">
-        <!-- Header Top -->
-        <div class="header-top">
-            <div class="auto-container clearfix">
-                <div class="top-left clearfix">
-                    <div class="text"><span class="icon flaticon-call-answer"></span> Need help? Call Us Now: <a href="tel:+254708773943" class="number">+254 708 773943</a></div>
-                </div>
-                <div class="top-right clearfix">
-                    <ul class="info-list">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="blog.html">Latest Blogs</a></li>
-                        <li class="quote"><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Top -->
-
-        <!-- Header Upper -->
-        <div class="header-upper">
-            <div class="inner-container">
+        <header class="main-header header-style-one">
+            <div class="header-top">
                 <div class="auto-container clearfix">
-                    <!-- Logo -->
-                    <div class="logo-outer">
-                        <div class="logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
+                    <div class="top-left clearfix">
+                        <div class="text"><span class="icon flaticon-call-answer"></span> Need help? Call Us Now: <a href="tel:+254708773943" class="number">+254 708 773943</a></div>
                     </div>
-
-                    <!-- Navigation -->
-                    <div class="nav-outer clearfix">
-                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
-                        <nav class="main-menu navbar-expand-md navbar-light">
-                            <div class="navbar-header">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="icon flaticon-menu-1"></span>
-                                </button>
-                            </div>
-                            
-                            <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
-                                <ul class="navigation clearfix">
-                                    <li><a href="index.html">Home</a></li>									
-                                    <li class="dropdown"><a href="about.html">About us</a>
-                                        <ul>
-                                            <li><a href="about.html">Our Introduction</a></li>
-                                            
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-                                        </ul>
-                                    </li>
-                                   
-                                    <li class="dropdown"><a href="blog.html">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Business</a></li>
-                                            <li><a href="blog.html">Fashion, Beauty & Travel</a></li>
-                                            <li><a href="blog.html">Kitchen & Gardening</a></li>
-                                            <li><a href="blog.html">Home & Living</a></li>
-                                            <li><a href="blog.html">Fitness & Health</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="shop.html">Shop</a>
-            
-                                    </li>
-                                    
-                                    <li><a href="login.html" target="_blank">Login</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                        
-                        <div class="outer-box clearfix">
-                            <div class="search-box-btn"><span class="icon flaticon-magnifying-glass-1"></span></div>							
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End Header Upper-->
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu">
-            <div class="menu-backdrop"></div>
-            <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
-            
-            <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
-                <ul class="navigation clearfix"></ul>
-                <div class="social-links">
-                    <ul class="clearfix">
-                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <!-- End Mobile Menu -->
-    </header>
-
-    <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/5.jpg)">
-        <div class="auto-container">
-            <h2>Contact Us</h2>
-            <ul class="page-breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Contact Us</li>
-            </ul>
-        </div>
-    </section>
-    <!--End Page Title-->
-    
-    <!-- Contact Form Section -->
-    <section class="contact-form-section" style="background-image:url(images/background/contact.png)">
-        <div class="auto-container">
-            <div class="sec-title">
-                <h2>Get In Touch</h2>
-                <div class="text">Have something to share with us? We'd love to hear from you through our contact form.</div>
-            </div>
-            
-            <div class="row clearfix">
-                <!-- Form Column -->
-                <div class="form-column col-lg-7 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <div class="contact-form">
-                            <form method="post" action="#" id="contact-form">
-                                <div class="row clearfix">
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <input type="text" name="username" placeholder="Your name" required>
-                                        <div class="error-message"></div>
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <input type="email" name="email" placeholder="Email address" required>
-                                        <div class="error-message"></div>
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <input type="text" name="subject" placeholder="Subject" required>
-                                        <div class="error-message"></div>
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <textarea name="message" placeholder="Your message" required></textarea>
-                                        <div class="error-message"></div>
-                                    </div>
-                                    
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                                        <button class="theme-btn btn-style-one" type="submit" name="submit-form">
-                                            <span class="txt">Submit Now</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Info Column -->
-                <div class="info-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <ul class="contact-info-list">
-                            <li><strong>Address:</strong><br>00100, Kitengela, Nairobi, Kenya</li>
-                            <li><strong>Phone:</strong><br><a href="tel:+254708773943">+254 708 773943</a></li>
-                            <li><strong>Email:</strong><br><a href="mailto:carolkirgotty@gmail.com">carolkirgotty@gmail.com</a></li>
-                            <li><strong>Opening Hours:</strong><br>Monday - Sunday: 8:00 AM - 10:00 PM</li>
+                    <div class="top-right clearfix">
+                        <ul class="info-list">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="blog.html">Latest Blogs</a></li>
+                            <li class="quote"><a href="contact.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- End Contact Form Section -->
-    
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="outer-container">
-            <div class="map-outer">
-                <div class="map-canvas"
-                    data-zoom="12"
-                    data-lat="-1.51542"
-                    data-lng="36.85012"
-                    data-type="roadmap"
-                    data-hue="#ffc400"
-                    data-title="Kitengela Office"
-                    data-icon-path="images/icons/map-marker.png"
-                    data-content="Mcmemuci Group<br>Kitengela, Nairobi<br>+254 708 773943">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Map Section -->
-    
-    <!--Main Footer-->
-     <footer class="main-footer">
-        <div class="auto-container">
-            <!--Widgets Section-->
-            <div class="widgets-section">
-                <div class="row clearfix">
-                    
-                    <!--big column-->
-                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="row clearfix">
-                        
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                                <div class="footer-widget logo-widget">
-                                    <div class="logo">
-                                        <a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a>
-                                    </div>
-                                    <div class="text">McMemuci Group is a diversified enterprise with ventures in media, real estate, hospitality, and lifestyle sectors across East Africa.</div>
-                                    <ul class="social-icons">
-                                        <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-f"></span></a></li>
-                                        
-                                        <li><a href="https://www.instagram.com/cmemuci?igsh=cmw2d2F6YzVjNmRq"><span class="fab fa-instagram"></span></a></li>
-                                        <li><a href="https://www.linkedin.com/in/murkell-media-house-360106216/?originalSubdomain=ke"><span class="fab fa-linkedin-in"></span></a></li>
-                                        <li><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE"><span class="fab fa-youtube"></span></a></li>
+            <div class="header-upper">
+                <div class="inner-container">
+                    <div class="auto-container clearfix">
+                        <div class="logo-outer">
+                            <div class="logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
+                        </div>
+
+                        <div class="nav-outer clearfix">
+                            <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
+                            <nav class="main-menu navbar-expand-md navbar-light">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="icon flaticon-menu-1"></span>
+                                    </button>
+                                </div>
+
+                                <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li class="dropdown"><a href="about.html">About us</a>
+                                            <ul>
+                                                <li><a href="about.html">Our Introduction</a></li>
+                                                <li><a href="testimonials.html">Testimonials</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="dropdown"><a href="blog.html">Blog</a>
+                                            <ul>
+                                                <li><a href="blog.html">Business</a></li>
+                                                <li><a href="blog.html">Fashion, Beauty & Travel</a></li>
+                                                <li><a href="blog.html">Kitchen & Gardening</a></li>
+                                                <li><a href="blog.html">Home & Living</a></li>
+                                                <li><a href="blog.html">Fitness & Health</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="shop.html">Shop</a>
+                                        </li>
+
+                                        <li><a href="login.html" target="_blank">Login</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget">
-                                    <h2>Quick Links</h2>
-                                    <div class="widget-content">
-                                        <ul class="list">
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Media Ventures</a></li>
-                                            <li><a href="#">Real Estate</a></li>
-                                            <li><a href="#">Wine Portfolio</a></li>
-                                            <li><a href="#">Contact</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-                    
-                    <!--big column-->
-                    <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="row clearfix">
-                        
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                                <div class="footer-widget contact-widget">
-                                    <h2>Contact Info</h2>
-                                    <div class="widget-content">
-                                        <a href="tel:+254708773943" class="contact-number">+254 708 773 943</a>
-                                        <ul>
-                                            <li>McMemuci Group Headquarters</li>
-                                            <li>Nairobi, Kenya</li>
-                                            <li>Email: <a href="mailto:CmemuciKE@gmail.com">CmemuciKE@gmail.com</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--Footer Column-->
-                            <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                                <div class="footer-widget newsletter-widget">
-                                    <h2>Newsletter</h2>
-                                    <div class="text">Subscribe for updates on our ventures and events</div>
-                                    <!-- Newsletter Form -->
-                                    <div class="newsletter-form">
-                                        <form method="post" action="#">
-                                            <div class="form-group">
-                                                <input type="email" name="email" value="" placeholder="Enter your email address" required>
-                                                <button type="submit" class="theme-btn btn-style-one"><span class="txt">Subscribe</span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <!--Footer Bottom-->
-            <div class="footer-bottom clearfix">
-                <div class="pull-left">
-                    <div class="copyright">&copy; 2025 McMemuci Group. All Rights Reserved.</div>
-                </div>
-                <div class="pull-right">
-                    <a href="privacy-policy.html">Privacy Policy</a> | 
-                    <a href="terms-conditions.html">Terms & Conditions</a>
-                </div>
-            </div>
-            
-        </div>
-    </footer>
-    
-</div>
+                            </nav>
 
-<!-- Search Popup -->
-<div id="search-popup" class="search-popup">
-    <div class="close-search theme-btn"><span class="flaticon-cancel"></span></div>
-    <div class="popup-inner">
-        <div class="overlay-layer"></div>
-        <div class="search-form">
-            <form method="post" action="#">
-                <div class="form-group">
-                    <fieldset>
-                        <input type="search" class="form-control" name="search-input" placeholder="Search here..." required>
-                        <input type="submit" value="Search" class="theme-btn">
-                    </fieldset>
+                            <div class="outer-box clearfix">
+                                <div class="search-box-btn"><span class="icon flaticon-magnifying-glass-1"></span></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
-            <br>
-            <h3>Recent Searches</h3>
-            <ul class="recent-searches">
-                <li><a href="#">Murkell Media</a></li>
-                <li><a href="#">Wine Accessories</a></li>
-                <li><a href="#">Podcasts</a></li>
-                <li><a href="#">Business Tips</a></li>
-                <li><a href="#">Shop Products</a></li>
-            </ul>
+            </div>
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
+
+                <nav class="menu-box">
+                    <div class="nav-logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
+                    <ul class="navigation clearfix"></ul>
+                    <div class="social-links">
+                        <ul class="clearfix">
+                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                            <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                            <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                            <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            </header>
+
+        <section class="page-title" style="background-image:url(images/background/5.jpg)">
+            <div class="auto-container">
+                <h2>Contact Us</h2>
+                <ul class="page-breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+        </section>
+        <section class="contact-form-section" style="background-image:url(images/background/contact.png)">
+            <div class="auto-container">
+                <div class="sec-title">
+                    <h2>Get In Touch</h2>
+                    <div class="text">Have something to share with us? We'd love to hear from you through our contact form.</div>
+                </div>
+
+                <div class="row clearfix">
+                    <div class="form-column col-lg-7 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <div class="contact-form">
+                                <form method="post" id="contact-form">
+                                    <div class="row clearfix">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <input type="text" name="from_name" placeholder="Your name" required>
+                                            <div class="error-message"></div>
+                                        </div>
+
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <input type="email" name="from_email" placeholder="Email address" required>
+                                            <div class="error-message"></div>
+                                        </div>
+
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <input type="tel" name="phone_number" placeholder="Phone Number (Optional)">
+                                            <div class="error-message"></div>
+                                        </div>
+
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <input type="text" name="subject" placeholder="Subject" required>
+                                            <div class="error-message"></div>
+                                        </div>
+
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <textarea name="message" placeholder="Your message" required></textarea>
+                                            <div class="error-message"></div>
+                                        </div>
+
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <button class="theme-btn btn-style-one" type="submit" name="submit-form">
+                                                <span class="txt">Submit Now</span>
+                                            </button>
+                                            <div id="form-messages" class="mt-3"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-column col-lg-5 col-md-12 col-sm-12">
+                        <div class="inner-column">
+                            <ul class="contact-info-list">
+                                <li><strong>Address:</strong><br>00100, Kitengela, Nairobi, Kenya</li>
+                                <li><strong>Phone:</strong><br><a href="tel:+254708773943">+254 708 773943</a></li>
+                                <li><strong>Email:</strong><br><a href="mailto:carolkirgotty@gmail.com">carolkirgotty@gmail.com</a></li>
+                                <li><strong>Opening Hours:</strong><br>Monday - Sunday: 8:00 AM - 10:00 PM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="map-section">
+            <div class="outer-container">
+                <div class="map-outer">
+                    <div class="map-canvas"
+                        data-zoom="12"
+                        data-lat="-1.51542"
+                        data-lng="36.85012"
+                        data-type="roadmap"
+                        data-hue="#ffc400"
+                        data-title="Kitengela Office"
+                        data-icon-path="images/icons/map-marker.png"
+                        data-content="Mcmemuci Group<br>Kitengela, Nairobi<br>+254 708 773943">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="main-footer">
+            <div class="auto-container">
+                <div class="widgets-section">
+                    <div class="row clearfix">
+
+                        <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+
+                                <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                                    <div class="footer-widget logo-widget">
+                                        <div class="logo">
+                                            <a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a>
+                                        </div>
+                                        <div class="text">McMemuci Group is a diversified enterprise with ventures in media, real estate, hospitality, and lifestyle sectors across East Africa.</div>
+                                        <ul class="social-icons">
+                                            <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-f"></span></a></li>
+
+                                            <li><a href="https://www.instagram.com/cmemuci?igsh=cmw2d2F6YzVjNmRq"><span class="fab fa-instagram"></span></a></li>
+                                            <li><a href="https://www.linkedin.com/in/murkell-media-house-360106216/?originalSubdomain=ke"><span class="fab fa-linkedin-in"></span></a></li>
+                                            <li><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE"><span class="fab fa-youtube"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget">
+                                        <h2>Quick Links</h2>
+                                        <div class="widget-content">
+                                            <ul class="list">
+                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="#">Media Ventures</a></li>
+                                                <li><a href="#">Real Estate</a></li>
+                                                <li><a href="#">Wine Portfolio</a></li>
+                                                <li><a href="#">Contact</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                            <div class="row clearfix">
+
+                                <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                                    <div class="footer-widget contact-widget">
+                                        <h2>Contact Info</h2>
+                                        <div class="widget-content">
+                                            <a href="tel:+254708773943" class="contact-number">+254 708 773 943</a>
+                                            <ul>
+                                                <li>McMemuci Group Headquarters</li>
+                                                <li>Nairobi, Kenya</li>
+                                                <li>Email: <a href="mailto:CmemuciKE@gmail.com">CmemuciKE@gmail.com</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <h2>Newsletter</h2>
+                                        <div class="text">Subscribe for updates on our ventures and events</div>
+                                        <div class="newsletter-form">
+                                            <form method="post" id="newsletter-form">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" value="" placeholder="Enter your email address" required>
+                                                    <button type="submit" class="theme-btn btn-style-one"><span class="txt">Subscribe</span></button>
+                                                </div>
+                                                <div id="newsletter-messages" class="mt-2"></div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="footer-bottom clearfix">
+                    <div class="pull-left">
+                        <div class="copyright">© 2025 McMemuci Group. All Rights Reserved.</div>
+                    </div>
+                    <div class="pull-right">
+                        <a href="privacy-policy.html">Privacy Policy</a> |
+                        <a href="terms-conditions.html">Terms & Conditions</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="search-popup" class="search-popup">
+        <div class="close-search theme-btn"><span class="flaticon-cancel"></span></div>
+        <div class="popup-inner">
+            <div class="overlay-layer"></div>
+            <div class="search-form">
+                <form method="post" action="#">
+                    <div class="form-group">
+                        <fieldset>
+                            <input type="search" class="form-control" name="search-input" placeholder="Search here..." required>
+                            <input type="submit" value="Search" class="theme-btn">
+                        </fieldset>
+                    </div>
+                </form>
+                <br>
+                <h3>Recent Searches</h3>
+                <ul class="recent-searches">
+                    <li><a href="#">Murkell Media</a></li>
+                    <li><a href="#">Wine Accessories</a></li>
+                    <li><a href="#">Podcasts</a></li>
+                    <li><a href="#">Business Tips</a></li>
+                    <li><a href="#">Shop Products</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- JavaScript Files -->
-<script src="js/jquery.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/scrollbar.js"></script>
-<script src="js/script.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
+    <script src="js/isotope.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/scrollbar.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            const formMessages = document.getElementById('form-messages');
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterMessages = document.getElementById('newsletter-messages');
+
+            // --- Contact Form Submission Logic ---
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    // EmailJS Service ID and Template IDs for Contact Form
+                    const serviceID = 'service_p2yyymj';
+                    const mcMemuciTemplateID = 'template_hrdlgzn'; // Notification to McMemuci Group
+                    const senderConfirmationTemplateID = 'template_7pcmry9'; // Confirmation to the User
+
+                    // Send email to yourself (McMemuci Group)
+                    emailjs.sendForm(serviceID, mcMemuciTemplateID, this)
+                        .then(() => {
+                            // If successful, then send the confirmation email to the sender
+                            return emailjs.sendForm(serviceID, senderConfirmationTemplateID, this);
+                        })
+                        .then(() => {
+                            // Both emails sent successfully
+                            formMessages.innerHTML = '<div class="alert alert-success" role="alert">Your message has been sent successfully! We\'ve also sent a confirmation to your email.</div>';
+                            contactForm.reset(); // Clear the form fields
+                            setTimeout(() => {
+                                formMessages.innerHTML = '';
+                            }, 5000);
+                        })
+                        .catch((error) => {
+                            // An error occurred during one of the sends
+                            console.error('Email sending failed for contact form:', error);
+                            formMessages.innerHTML = '<div class="alert alert-danger" role="alert">Failed to send message. Please try again later.</div>';
+                            setTimeout(() => {
+                                formMessages.innerHTML = '';
+                            }, 5000);
+                        });
+                });
+            } else {
+                console.error("Contact form with ID 'contact-form' not found. Please check your HTML.");
+            }
+
+            // --- Newsletter Form Submission Logic ---
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    const serviceID = 'service_p2yyymj'; // Your existing service ID
+                    // IMPORTANT: Replace with the actual Template ID for your newsletter notification
+                    const newsletterNotificationTemplateID = 'template_oqt0uo5'; // e.g., 'template_newsletter_subscriber'
+                    // IMPORTANT: If you have a separate confirmation template for the subscriber, add its ID here:
+                    // const newsletterConfirmationTemplateID = 'YOUR_NEWSLETTER_CONFIRMATION_TEMPLATE_ID'; // e.g., 'template_newsletter_confirmation'
+
+
+                    // Send email to yourself about the new subscriber
+                    emailjs.sendForm(serviceID, newsletterNotificationTemplateID, this)
+                        .then(() => {
+                            // Optional: If you created a confirmation email for the subscriber, uncomment this line:
+                            // return emailjs.sendForm(serviceID, newsletterConfirmationTemplateID, this);
+                            return Promise.resolve(); // If no subscriber confirmation, just resolve
+                        })
+                        .then(() => {
+                            newsletterMessages.innerHTML = '<div class="alert alert-success" role="alert">Thank you for subscribing!</div>';
+                            newsletterForm.reset(); // Clear the form field
+                            setTimeout(() => {
+                                newsletterMessages.innerHTML = '';
+                            }, 5000);
+                        })
+                        .catch((error) => {
+                            console.error('Email sending failed for newsletter form:', error);
+                            newsletterMessages.innerHTML = '<div class="alert alert-danger" role="alert">Subscription failed. Please try again later.</div>';
+                            setTimeout(() => {
+                                newsletterMessages.innerHTML = '';
+                            }, 5000);
+                        });
+                });
+            } else {
+                console.error("Newsletter form with ID 'newsletter-form' not found. Please check your HTML.");
+            }
+        });
+    </script>
 
 </body>
 </html>
