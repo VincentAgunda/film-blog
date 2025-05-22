@@ -1,13 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
-import {
+import { 
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,10 +22,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-export const storage = getStorage(firebaseApp);
 
-// Initialize Firebase Authentication and get a reference to the service
+// Initialize Firebase services
 export const auth = getAuth(firebaseApp);
+export const storage = getStorage(firebaseApp);
+export const db = getDatabase(firebaseApp);
 
 // --- Helper function to display messages ---
 function showMessage(elementId, message, type = 'danger') {
@@ -47,6 +49,7 @@ function updateAuthUI(user) {
     const loginDropdownLink = document.getElementById('loginDropdownLink');
     const logoutDropdownLink = document.getElementById('logoutDropdownLink');
     const adminDashboardDropdownLink = document.getElementById('adminDashboardDropdownLink');
+    const adminDivider = document.getElementById('adminDivider');
     const userDropdown = document.getElementById('userDropdown');
     
     if (user) {
@@ -56,22 +59,35 @@ function updateAuthUI(user) {
         
         // Update user icon with logged-in state
         if (userDropdown) {
-            userDropdown.innerHTML = '<i class="fas fa-user-circle text-success"></i>';
+            const icon = userDropdown.querySelector('i') || document.createElement('i');
+            icon.className = 'fas fa-user-circle text-success';
+            userDropdown.innerHTML = '';
+            userDropdown.appendChild(icon);
+            if (userDropdown.querySelector('span')) {
+                userDropdown.appendChild(userDropdown.querySelector('span'));
+            }
         }
 
         // Check if user is admin and show/hide admin dashboard link
         user.getIdTokenResult().then((idTokenResult) => {
             if (idTokenResult.claims.admin) {
                 console.log('User is an admin');
-                if (adminDashboardDropdownLink) {
-                    adminDashboardDropdownLink.style.display = 'block';
-                    // Update icon for admin users
-                    if (userDropdown) {
-                        userDropdown.innerHTML = '<i class="fas fa-user-shield text-primary"></i>';
+                if (adminDashboardDropdownLink) adminDashboardDropdownLink.style.display = 'block';
+                if (adminDivider) adminDivider.style.display = 'block';
+                
+                // Update icon for admin users
+                if (userDropdown) {
+                    const icon = userDropdown.querySelector('i') || document.createElement('i');
+                    icon.className = 'fas fa-user-shield text-primary';
+                    userDropdown.innerHTML = '';
+                    userDropdown.appendChild(icon);
+                    if (userDropdown.querySelector('span')) {
+                        userDropdown.appendChild(userDropdown.querySelector('span'));
                     }
                 }
-            } else if (adminDashboardDropdownLink) {
-                adminDashboardDropdownLink.style.display = 'none';
+            } else {
+                if (adminDashboardDropdownLink) adminDashboardDropdownLink.style.display = 'none';
+                if (adminDivider) adminDivider.style.display = 'none';
             }
         }).catch(error => {
             console.error("Error getting ID token result:", error);
@@ -81,10 +97,17 @@ function updateAuthUI(user) {
         if (loginDropdownLink) loginDropdownLink.style.display = 'block';
         if (logoutDropdownLink) logoutDropdownLink.style.display = 'none';
         if (adminDashboardDropdownLink) adminDashboardDropdownLink.style.display = 'none';
+        if (adminDivider) adminDivider.style.display = 'none';
         
         // Update user icon with logged-out state
         if (userDropdown) {
-            userDropdown.innerHTML = '<i class="fas fa-user-circle"></i>';
+            const icon = userDropdown.querySelector('i') || document.createElement('i');
+            icon.className = 'fas fa-user-circle';
+            userDropdown.innerHTML = '';
+            userDropdown.appendChild(icon);
+            if (userDropdown.querySelector('span')) {
+                userDropdown.appendChild(userDropdown.querySelector('span'));
+            }
         }
     }
 }
@@ -302,3 +325,24 @@ if (loginForm) {
 document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI(auth.currentUser);
 });
+
+// Export functions for use in other modules
+export function getCurrentUser() {
+    return auth.currentUser;
+}
+
+export async function checkAuthStatus() {
+    const user = auth.currentUser;
+    if (!user) return { isAuthenticated: false, isAdmin: false };
+    
+    const idTokenResult = await user.getIdTokenResult(true);
+    return {
+        isAuthenticated: true,
+        isAdmin: idTokenResult.claims.admin || false,
+        user: {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName || user.email.split('@')[0]
+        }
+    };
+}

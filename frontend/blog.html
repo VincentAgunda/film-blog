@@ -11,17 +11,81 @@
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+/* Custom styles for modals and theme consistency */
+.modal-content {
+    border-radius: 0.3rem; /* Standard Bootstrap radius */
+    border: none; /* Remove default border if desired */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Softer shadow */
+}
+.modal-header {
+    background-color: #f8f9fa; /* Light grey background for header */
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+}
+.modal-header .close {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    padding: 1rem;
+    margin: -1rem -1rem -1rem auto;
+}
+.modal-header .close:hover {
+    opacity: .75;
+}
+.modal-title {
+    font-weight: 500; /* Or match your theme's heading font-weight */
+    color: #343a40; /* Darker title color */
+}
+.modal-body {
+    padding: 1.5rem;
+    line-height: 1.6;
+}
+.modal-footer {
+    background-color: #f8f9fa; /* Light grey background for footer */
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Ensure theme button style is applied in modals */
+.modal .theme-btn.btn-style-one {
+    /* Assuming your theme-btn styles are globally defined in style.css.
+       If not, you might need to copy/ensure specificity here.
+       Example:
+       color: #fff;
+       background-color: #007bff; Your theme's primary color 
+       border-color: #007bff;
+    */
+}
+.modal .theme-btn.btn-style-one:hover {
+    /* background-color: #0056b3; Your theme's primary hover color */
+    /* border-color: #0056b3; */
+}
+.modal-lg {
+    max-width: 800px;
+}
+
+/* Spinner style for submit buttons */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: .2em;
+    margin-right: 0.5em;
+}
+</style>
 </head>
 
 <body>
 
 <div class="page-wrapper">
-    <!-- Preloader -->
     <div class="preloader"></div>
 
-    <!-- Main Header -->
     <header class="main-header header-style-one">
-        <!-- Header Top -->
         <div class="header-top">
             <div class="auto-container clearfix">
                 <div class="top-left clearfix">
@@ -29,7 +93,7 @@
                 </div>
                 <div class="top-right clearfix">
                     <ul class="info-list">
-                        <li><a href="about.html">About Us</a></li>
+                        <
                         <li><a href="blog.html">Latest Blogs</a></li>
                         <li class="quote"><a href="contact.html">Contact Us</a></li>
                     </ul>
@@ -37,16 +101,13 @@
             </div>
         </div>
 
-        <!-- Header Upper -->
         <div class="header-upper">
             <div class="inner-container">
                 <div class="auto-container clearfix">
-                    <!-- Logo -->
                     <div class="logo-outer">
                         <div class="logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
                     </div>
 
-                    <!-- Navigation -->
                     <div class="nav-outer clearfix">
                         <div class="mobile-nav-toggler"><span class="icon flaticon-menu-1"></span></div>
                         <nav class="main-menu navbar-expand-md navbar-light">
@@ -58,35 +119,26 @@
                             
                             <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li><a href="index.html">Home</a></li>									
+                                    <li><a href="index.html">Home</a></li>                                    
                                     <li class="dropdown"><a href="about.html">About us</a>
                                         <ul>
                                             <li><a href="about.html">Our Introduction</a></li>
-                                           
                                             <li><a href="testimonials.html">Testimonials</a></li>
                                         </ul>
                                     </li>
-                                    
-                                   
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="login.html" target="_blank">Login</a></li>
                                 </ul>
                             </div>
                         </nav>
-                        
-                        <div class="outer-box clearfix">
-                            <div class="search-box-btn"><span class="icon flaticon-magnifying-glass-1"></span></div>							
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div class="mobile-menu">
             <div class="menu-backdrop"></div>
             <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
-            
             <nav class="menu-box">
                 <div class="nav-logo"><a href="index.html"><img src="images/gallery/mc.png" alt="McMemuci Logo" style="height: 60px;"></a></div>
                 <ul class="navigation clearfix"></ul>
@@ -103,7 +155,6 @@
         </div>
     </header>
 
-    <!--Page Title-->
     <section class="page-title" style="background-image:url(images/background/5.jpg)">
         <div class="auto-container">
             <h2>Our Blog</h2>
@@ -114,373 +165,449 @@
         </div>
     </section>
     
-    <!--Sidebar Page Container-->
     <div class="sidebar-page-container">
         <div class="auto-container">
             <div class="row clearfix">
                 
-                <!--Content Side / Blog Classic -->
-                <div class="content-side col-xl-9 col-lg-8 col-md-12 col-sm-12">
-                    <div class="blog-classic padding-right">
-
-                        <!-- Business Blog Post -->
-                        <div class="news-block-three">
+                <div class="content-side col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="blog-classic"> <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="blog-detail.html"><img src="images/resource/business-blog.jpg" alt="Business Growth Strategies"></a></figure>
-                                    <span class="date">15 June 2023</span>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal1"><img src="images/resource/business-blog.jpg" alt="Business Growth Strategies"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
                                         <ul class="post-info clearfix">
-                                            <li><a href="blog-detail.html">By: Mcmemuci Team</a></li>
-                                            <li><a href="blog-detail.html">Business, Entrepreneurship</a></li>
-                                            <li><a href="blog-detail.html">Comments: 5</a></li>
+                                            <li><a>By: Mcmemuci Team</a></li>
+                                            <li><a>Business, Entrepreneurship</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#commentModal1">Leave a comment</a></li>
                                         </ul>
                                     </div>
-                                    <h3><a href="blog-detail.html">5 Growth Strategies for Kenyan SMEs in 2023</a></h3>
+                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal1">5 Growth Strategies for Kenyan SMEs in 2023</a></h3>
                                     <div class="text">Discover how Kenyan small and medium enterprises can leverage digital transformation, creative media solutions from Murkell Media House, and strategic partnerships to scale their businesses in the current economic climate. We explore practical approaches that have worked for our ventures...</div>
-                                    <div class="link-box"><a href="blog-detail.html" class="theme-btn read-more">Read more</a></div>
+                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal1">Read more</a></div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Fashion/Beauty Blog Post -->
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="blog-detail.html"><img src="images/resource/fashion-blog.jpg" alt="Fashion Trends"></a></figure>
-                                    <span class="date">8 June 2023</span>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal2"><img src="images/resource/fashion-blog.jpg" alt="Fashion Trends"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
                                         <ul class="post-info clearfix">
-                                            <li><a href="blog-detail.html">By: El Muci Team</a></li>
-                                            <li><a href="blog-detail.html">Fashion, Beauty</a></li>
-                                            <li><a href="blog-detail.html">Comments: 12</a></li>
+                                            <li><a>By: El Muci Team</a></li>
+                                            <li><a>Fashion, Beauty</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#commentModal2">Leave a comment</a></li>
                                         </ul>
                                     </div>
-                                    <h3><a href="blog-detail.html">Summer 2023: African Fashion Trends to Watch</a></h3>
+                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal2">Summer 2023: African Fashion Trends to Watch</a></h3>
                                     <div class="text">El Muci Inc brings you the hottest African-inspired fashion trends for summer 2023. From bold Ankara prints to minimalist contemporary designs, we showcase how to incorporate these looks into your wardrobe. Plus, learn how K.Muci Organics complements these styles with natural beauty solutions...</div>
-                                    <div class="link-box"><a href="blog-detail.html" class="theme-btn read-more">Read more</a></div>
+                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal2">Read more</a></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Kitchen/Gardening Blog Post -->
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="blog-detail.html"><img src="images/resource/garden-blog.jpg" alt="Kitchen Gardening"></a></figure>
-                                    <span class="date">1 June 2023</span>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal3"><img src="images/resource/garden-blog.jpg" alt="Kitchen Gardening"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
                                         <ul class="post-info clearfix">
-                                            <li><a href="blog-detail.html">By: Gardening CEO</a></li>
-                                            <li><a href="blog-detail.html">Kitchen, Gardening</a></li>
-                                            <li><a href="blog-detail.html">Comments: 8</a></li>
+                                            <li><a>By: Gardening CEO</a></li>
+                                            <li><a>Kitchen, Gardening</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#commentModal3">Leave a comment</a></li>
                                         </ul>
                                     </div>
-                                    <h3><a href="blog-detail.html">Urban Kitchen Gardening: Fresh Herbs at Home</a></h3>
+                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal3">Urban Kitchen Gardening: Fresh Herbs at Home</a></h3>
                                     <div class="text">The Gardening CEO shares practical tips for creating your own kitchen garden in urban spaces. Learn how to grow fresh herbs and vegetables even with limited space, and discover how these can enhance your cooking and pair beautifully with Miss Wine Bottle's wine recommendations...</div>
-                                    <div class="link-box"><a href="blog-detail.html" class="theme-btn read-more">Read more</a></div>
+                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal3">Read more</a></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Home/Living Blog Post -->
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="blog-detail.html"><img src="images/resource/home-blog.jpg" alt="Home Living"></a></figure>
-                                    <span class="date">25 May 2023</span>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal4"><img src="images/resource/home-blog.jpg" alt="Home Living"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
                                         <ul class="post-info clearfix">
-                                            <li><a href="blog-detail.html">By: Home & Nanny Works</a></li>
-                                            <li><a href="blog-detail.html">Home, Living</a></li>
-                                            <li><a href="blog-detail.html">Comments: 7</a></li>
+                                            <li><a>By: Home & Nanny Works</a></li>
+                                            <li><a>Home, Living</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#commentModal4">Leave a comment</a></li>
                                         </ul>
                                     </div>
-                                    <h3><a href="blog-detail.html">Creating Functional & Beautiful Living Spaces</a></h3>
+                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal4">Creating Functional & Beautiful Living Spaces</a></h3>
                                     <div class="text">Our Home & Nanny Works team shares insights on transforming your living spaces with functional yet beautiful designs. Learn organization hacks, child-friendly decor ideas from Coulture Kids, and how to incorporate Bedazzle Central KE's customized items for a personalized touch...</div>
-                                    <div class="link-box"><a href="blog-detail.html" class="theme-btn read-more">Read more</a></div>
+                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal4">Read more</a></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Fitness/Health Blog Post -->
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="blog-detail.html"><img src="images/resource/fitness-blog.jpg" alt="Fitness Health"></a></figure>
-                                    <span class="date">18 May 2023</span>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal5"><img src="images/resource/fitness-blog.jpg" alt="Fitness Health"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
                                         <ul class="post-info clearfix">
-                                            <li><a href="blog-detail.html">By: Fabflexx Team</a></li>
-                                            <li><a href="blog-detail.html">Fitness, Health</a></li>
-                                            <li><a href="blog-detail.html">Comments: 15</a></li>
+                                            <li><a>By: Fabflexx Team</a></li>
+                                            <li><a>Fitness, Health</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#commentModal5">Leave a comment</a></li>
                                         </ul>
                                     </div>
-                                    <h3><a href="blog-detail.html">Holistic Wellness: Fitness Meets Nutrition</a></h3>
+                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal5">Holistic Wellness: Fitness Meets Nutrition</a></h3>
                                     <div class="text">Fabflexx Femme Fitness experts combine workout routines with nutritional advice for complete wellness. Discover how our fitness programs complement K.Muci Organics' natural products, and learn about our upcoming wellness retreats that incorporate Memycu Lifestyle principles...</div>
-                                    <div class="link-box"><a href="blog-detail.html" class="theme-btn read-more">Read more</a></div>
+                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal5">Read more</a></div>
                                 </div>
                             </div>
                         </div>
                         
                     </div>
                     
-                    <!--Styled Pagination-->
                     <ul class="styled-pagination">
                         <li><a href="#" class="active">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#"><span class="fa fa-angle-right"></span></a></li>
-                    </ul>                
+                    </ul>                       
                 </div>
                 
-                <!--Sidebar Side-->
-                <div class="sidebar-side col-xl-3 col-lg-4 col-md-12 col-sm-12">
-                    <aside class="sidebar">
-                        
-                        <!-- Search -->
-                        <div class="sidebar-widget search-box">
-                            <form method="post" action="#">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Search blog posts..." required>
-                                    <button type="submit"><span class="icon fa fa-search"></span></button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <!--Blog Category Widget-->
-                        <div class="sidebar-widget sidebar-blog-category">
-                            <div class="sidebar-title">
-                                <h2>Categories</h2>
-                            </div>
-                            <ul class="cat-list">
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Fashion, Beauty & Travel</a></li>
-                                <li><a href="#">Kitchen & Gardening</a></li>
-                                <li><a href="#">Home & Living</a></li>
-                                <li><a href="#">Fitness & Health</a></li>                                
-                            </ul>
-                        </div>
-                        
-                        <!-- Popular Posts -->
-                        <div class="sidebar-widget popular-posts">
-                            <div class="sidebar-title"><h2>Recent Posts</h2></div>
-
-                            <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/business-thumb.jpg" alt="Business Growth"></a></figure>
-                                <div class="text"><a href="blog-detail.html">5 Growth Strategies for Kenyan SMEs in 2023</a></div>
-                                <div class="post-info">15 June 2023</div>
-                            </article>
-
-                            <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/fashion-thumb.jpg" alt="Fashion Trends"></a></figure>
-                                <div class="text"><a href="blog-detail.html">Summer 2023: African Fashion Trends</a></div>
-                                <div class="post-info">8 June 2023</div>
-                            </article>
-                            
-                            <article class="post">
-                                <figure class="post-thumb"><a href="blog-detail.html"><img src="images/resource/garden-thumb.jpg" alt="Kitchen Garden"></a></figure>
-                                <div class="text"><a href="blog-detail.html">Urban Kitchen Gardening Guide</a></div>
-                                <div class="post-info">1 June 2023</div>
-                            </article>
-                        </div>
-                        
-                        <!-- Popular Tags -->
-                        <div class="sidebar-widget popular-tags">
-                            <div class="sidebar-title"><h2>Tags</h2></div>
-                            <a href="#">Business</a>
-                            <a href="#">Fashion</a>
-                            <a href="#">Gardening</a>
-                            <a href="#">Wellness</a>
-                            <a href="#">Home Decor</a>
-                            <a href="#">Entrepreneurship</a>
-                        </div>
-                        
-                    </aside>
                 </div>
-            </div>
         </div>
     </div>
     
    <footer class="main-footer">
-    <div class="auto-container">
-        <div class="widgets-section">
-            <div class="row clearfix">
-
-                <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="row clearfix">
-
-                        <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                            <div class="footer-widget logo-widget">
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/gallery/mur.png" alt="McMemuci Logo" style="height: 60px;"></a>
-                                </div>
-                                <div class="text">McMemuci Group is a diversified enterprise with ventures in media, real estate, hospitality, and lifestyle sectors across East Africa.</div>
-                                <ul class="social-icons">
-                                    <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-f"></span></a></li>
-                                    <li><a href="https://www.instagram.com/cmemuci?igsh=cmw2d2F6YzVjNmRq"><span class="fab fa-instagram"></span></a></li>
-                                    <li><a href="https://www.linkedin.com/in/murkell-media-house-360106216/?originalSubdomain=ke"><span class="fab fa-linkedin-in"></span></a></li>
-                                    <li><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE"><span class="fab fa-youtube"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                            <div class="footer-widget links-widget">
-                                <h2>Quick Links</h2>
-                                <div class="widget-content">
-                                    <ul class="list">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="index-6.html">Media Ventures</a></li>
-                                        <li><a href="index-6.html">Wine Portfolio</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="big-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="row clearfix">
-
-                        <div class="footer-column col-lg-5 col-md-6 col-sm-12">
-                            <div class="footer-widget contact-widget">
-                                <h2>Contact Info</h2>
-                                <div class="widget-content">
-                                    <a href="tel:+254708773943" class="contact-number">+254 708 773 943</a>
-                                    <ul>
-                                        <li>McMemuci Group Headquarters</li>
-                                        <li>Nairobi, Kenya</li>
-                                        <li>Email: <a href="mailto:CmemuciKE@gmail.com">CmemuciKE@gmail.com</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="footer-column col-lg-7 col-md-6 col-sm-12">
-                            <div class="footer-widget newsletter-widget">
-                                <h2>Newsletter</h2>
-                                <div class="text">Subscribe for updates on our ventures and events</div>
-                                <div class="newsletter-form">
-                                    <form method="post" id="newsletter-form">
-                                        <div class="form-group">
-                                            <input type="email" name="email" value="" placeholder="Enter your email address" required>
-                                            <button type="submit" class="theme-btn btn-style-one"><span class="txt">Subscribe</span></button>
-                                        </div>
-                                        <div id="newsletter-messages" class="mt-2"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="footer-bottom clearfix">
-            <div class="pull-left">
-                <div class="copyright">© 2025 McMemuci Group. All Rights Reserved.</div>
-            </div>
-            <div class="pull-right">
-                <a href="privacy-policy.html">Privacy Policy</a> |
-                <a href="terms-conditions.html">Terms & Conditions</a>
-            </div>
-        </div>
-
-    </div>
+     <div class="auto-container">
+         <div class="widgets-section">
+             <div class="row clearfix">
+                 <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                     <div class="row clearfix">
+                         <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                             <div class="footer-widget logo-widget">
+                                 <div class="logo">
+                                     <a href="index.html"><img src="images/gallery/mur.png" alt="McMemuci Logo" style="height: 60px;"></a>
+                                 </div>
+                                 <div class="text">McMemuci Group is a diversified enterprise with ventures in media, real estate, hospitality, and lifestyle sectors across East Africa.</div>
+                                 <ul class="social-icons">
+                                     <li><a href="https://www.facebook.com/murkellmediahouse/"><span class="fab fa-facebook-f"></span></a></li>
+                                     <li><a href="https://www.instagram.com/cmemuci?igsh=cmw2d2F6YzVjNmRq"><span class="fab fa-instagram"></span></a></li>
+                                     <li><a href="https://www.linkedin.com/in/murkell-media-house-360106216/?originalSubdomain=ke"><span class="fab fa-linkedin-in"></span></a></li>
+                                     <li><a href="https://youtu.be/ScQ1cPwmTuM?si=qNPpUwfqE1k-xuQE"><span class="fab fa-youtube"></span></a></li>
+                                 </ul>
+                             </div>
+                         </div>
+                         <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                             <div class="footer-widget links-widget">
+                                 <h2>Quick Links</h2>
+                                 <div class="widget-content">
+                                     <ul class="list">
+                                         <li><a href="about.html">About Us</a></li>
+                                         <li><a href="index-6.html">Media Ventures</a></li>
+                                         <li><a href="index-6.html">Wine Portfolio</a></li>
+                                         <li><a href="contact.html">Contact</a></li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="big-column col-lg-6 col-md-12 col-sm-12">
+                     <div class="row clearfix">
+                         <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+                             <div class="footer-widget contact-widget">
+                                 <h2>Contact Info</h2>
+                                 <div class="widget-content">
+                                     <a href="tel:+254708773943" class="contact-number">+254 708 773 943</a>
+                                     <ul>
+                                         <li>McMemuci Group Headquarters</li>
+                                         <li>Nairobi, Kenya</li>
+                                         <li>Email: <a href="mailto:CmemuciKE@gmail.com">CmemuciKE@gmail.com</a></li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="footer-column col-lg-7 col-md-6 col-sm-12">
+                             <div class="footer-widget newsletter-widget">
+                                 <h2>Newsletter</h2>
+                                 <div class="text">Subscribe for updates on our ventures and events</div>
+                                 <div class="newsletter-form">
+                                     <form method="post" id="newsletter-form">
+                                         <div class="form-group">
+                                             <input type="email" name="email" value="" placeholder="Enter your email address" required>
+                                             <button type="submit" class="theme-btn btn-style-one"><span class="txt">Subscribe</span></button>
+                                         </div>
+                                         <div id="newsletter-messages" class="mt-2"></div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="footer-bottom clearfix">
+             <div class="pull-left">
+                 <div class="copyright">© 2025 McMemuci Group. All Rights Reserved.</div>
+             </div>
+             <div class="pull-right">
+                 <a href="privacy-policy.html">Privacy Policy</a> |
+                 <a href="terms-conditions.html">Terms & Conditions</a>
+             </div>
+         </div>
+     </div>
 </footer>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-    // Initialize EmailJS with your Public Key
-    (function() {
-        emailjs.init("5o7FSKFsm9NBOkGZp"); // Your Public Key
-    })();
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // We only need the newsletter form logic here as this is the common footer
-        const newsletterForm = document.getElementById('newsletter-form');
-        const newsletterMessages = document.getElementById('newsletter-messages');
-
-        // --- Newsletter Form Submission Logic ---
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                const serviceID = 'service_p2yyymj'; // Your Service ID
-                const newsletterNotificationTemplateID = 'template_oqt0uo5'; // Your Newsletter Notification Template ID
-
-                // Send email to yourself about the new subscriber
-                emailjs.sendForm(serviceID, newsletterNotificationTemplateID, this)
-                    .then(() => {
-                        newsletterMessages.innerHTML = '<div class="alert alert-success" role="alert">Thank you for subscribing!</div>';
-                        newsletterForm.reset(); // Clear the form field
-                        setTimeout(() => {
-                            newsletterMessages.innerHTML = '';
-                        }, 5000);
-                    })
-                    .catch((error) => {
-                        console.error('Email sending failed for newsletter form:', error);
-                        newsletterMessages.innerHTML = '<div class="alert alert-danger" role="alert">Subscription failed. Please try again later.</div>';
-                        setTimeout(() => {
-                            newsletterMessages.innerHTML = '';
-                        }, 5000);
-                    });
-            });
-        } else {
-            console.error("Newsletter form with ID 'newsletter-form' not found. Please check your HTML.");
-        }
-    });
-</script>
     
-</div>
+</div><div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
-<!--Scroll to top-->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
-<!--Search Popup-->
-<div id="search-popup" class="search-popup">
-    <div class="close-search theme-btn"><span class="flaticon-cancel"></span></div>
-    <div class="popup-inner">
-        <div class="overlay-layer"></div>
-        <div class="search-form">
-            <form method="post" action="#">
-                <div class="form-group">
-                    <fieldset>
-                        <input type="search" class="form-control" name="search-input" placeholder="Search blog posts..." required>
-                        <input type="submit" value="Search" class="theme-btn">
-                    </fieldset>
+<div class="modal fade" id="blogModal1" tabindex="-1" role="dialog" aria-labelledby="blogModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModal1Label">5 Growth Strategies for Kenyan SMEs in 2023</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Discover how Kenyan small and medium enterprises can leverage digital transformation, creative media solutions from Murkell Media House, and strategic partnerships to scale their businesses in the current economic climate. We explore practical approaches that have worked for our ventures...</p>
                 </div>
-            </form>
-            <br>
-            <h3>Recent Searches</h3>
-            <ul class="recent-searches">
-                <li><a href="#">Business Growth</a></li>
-                <li><a href="#">Fashion Trends</a></li>
-                <li><a href="#">Kitchen Garden</a></li>
-                <li><a href="#">Home Decor</a></li>
-                <li><a href="#">Fitness Tips</a></li>
-            </ul>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="blogModal2" tabindex="-1" role="dialog" aria-labelledby="blogModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModal2Label">Summer 2023: African Fashion Trends to Watch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>El Muci Inc brings you the hottest African-inspired fashion trends for summer 2023. From bold Ankara prints to minimalist contemporary designs, we showcase how to incorporate these looks into your wardrobe. Plus, learn how K.Muci Organics complements these styles with natural beauty solutions...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="blogModal3" tabindex="-1" role="dialog" aria-labelledby="blogModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModal3Label">Urban Kitchen Gardening: Fresh Herbs at Home</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>The Gardening CEO shares practical tips for creating your own kitchen garden in urban spaces. Learn how to grow fresh herbs and vegetables even with limited space, and discover how these can enhance your cooking and pair beautifully with Miss Wine Bottle's wine recommendations...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="blogModal4" tabindex="-1" role="dialog" aria-labelledby="blogModal4Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModal4Label">Creating Functional & Beautiful Living Spaces</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Our Home & Nanny Works team shares insights on transforming your living spaces with functional yet beautiful designs. Learn organization hacks, child-friendly decor ideas from Coulture Kids, and how to incorporate Bedazzle Central KE's customized items for a personalized touch...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="blogModal5" tabindex="-1" role="dialog" aria-labelledby="blogModal5Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="blogModal5Label">Holistic Wellness: Fitness Meets Nutrition</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Fabflexx Femme Fitness experts combine workout routines with nutritional advice for complete wellness. Discover how our fitness programs complement K.Muci Organics' natural products, and learn about our upcoming wellness retreats that incorporate Memycu Lifestyle principles...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- JavaScript Files -->
+
+<div class="modal fade" id="commentModal1" tabindex="-1" role="dialog" aria-labelledby="commentModal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModal1Label">Leave a Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="comment-form">
+                    <input type="hidden" name="blogPostTitle" value="5 Growth Strategies for Kenyan SMEs in 2023">
+                    <div class="form-group">
+                        <label for="commentName1">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="commentName1" name="commentName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail1">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="commentEmail1" name="commentEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText1">Comment <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="commentText1" name="commentText" rows="4" placeholder="Your Comment" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit" class="theme-btn btn-style-one">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="commentModal2" tabindex="-1" role="dialog" aria-labelledby="commentModal2Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModal2Label">Leave a Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="comment-form">
+                    <input type="hidden" name="blogPostTitle" value="Summer 2023: African Fashion Trends to Watch">
+                    <div class="form-group">
+                        <label for="commentName2">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="commentName2" name="commentName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail2">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="commentEmail2" name="commentEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText2">Comment <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="commentText2" name="commentText" rows="4" placeholder="Your Comment" required></textarea>
+                    </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit" class="theme-btn btn-style-one">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="commentModal3" tabindex="-1" role="dialog" aria-labelledby="commentModal3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModal3Label">Leave a Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="comment-form">
+                    <input type="hidden" name="blogPostTitle" value="Urban Kitchen Gardening: Fresh Herbs at Home">
+                    <div class="form-group">
+                        <label for="commentName3">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="commentName3" name="commentName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail3">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="commentEmail3" name="commentEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText3">Comment <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="commentText3" name="commentText" rows="4" placeholder="Your Comment" required></textarea>
+                    </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit" class="theme-btn btn-style-one">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="commentModal4" tabindex="-1" role="dialog" aria-labelledby="commentModal4Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModal4Label">Leave a Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="comment-form">
+                    <input type="hidden" name="blogPostTitle" value="Creating Functional & Beautiful Living Spaces">
+                    <div class="form-group">
+                        <label for="commentName4">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="commentName4" name="commentName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail4">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="commentEmail4" name="commentEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText4">Comment <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="commentText4" name="commentText" rows="4" placeholder="Your Comment" required></textarea>
+                    </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit" class="theme-btn btn-style-one">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="commentModal5" tabindex="-1" role="dialog" aria-labelledby="commentModal5Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModal5Label">Leave a Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <form class="comment-form">
+                    <input type="hidden" name="blogPostTitle" value="Holistic Wellness: Fitness Meets Nutrition">
+                    <div class="form-group">
+                        <label for="commentName5">Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="commentName5" name="commentName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentEmail5">Email <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control" id="commentEmail5" name="commentEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commentText5">Comment <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="commentText5" name="commentText" rows="4" placeholder="Your Comment" required></textarea>
+                    </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                         <button type="submit" class="theme-btn btn-style-one">Submit Comment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -491,6 +618,91 @@
 <script src="js/appear.js"></script>
 <script src="js/scrollbar.js"></script>
 <script src="js/script.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init("5o7FSKFsm9NBOkGZp"); // Your EmailJS Public Key
+    })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter Form Submission Logic
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterMessages = document.getElementById('newsletter-messages');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const serviceID = 'service_p2yyymj'; 
+            const newsletterNotificationTemplateID = 'template_oqt0uo5';
+            const submitButton = newsletterForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.querySelector('.txt').textContent;
+
+            submitButton.disabled = true;
+            submitButton.querySelector('.txt').innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Subscribing...';
+
+            emailjs.sendForm(serviceID, newsletterNotificationTemplateID, this)
+                .then(() => {
+                    newsletterMessages.innerHTML = '<div class="alert alert-success" role="alert">Thank you for subscribing!</div>';
+                    newsletterForm.reset(); 
+                    setTimeout(() => { newsletterMessages.innerHTML = ''; }, 5000);
+                })
+                .catch((error) => {
+                    console.error('Email sending failed for newsletter form:', error);
+                    newsletterMessages.innerHTML = '<div class="alert alert-danger" role="alert">Subscription failed. Please try again later.</div>';
+                    setTimeout(() => { newsletterMessages.innerHTML = ''; }, 5000);
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.querySelector('.txt').textContent = originalButtonText;
+                });
+        });
+    } else {
+        console.error("Newsletter form with ID 'newsletter-form' not found.");
+    }
+
+    // Comment Form Submission Logic
+    const serviceID_comments = 'service_p2yyymj'; // Same Service ID as newsletter
+    // IMPORTANT: Replace 'YOUR_NEW_COMMENT_TEMPLATE_ID' with your actual EmailJS template ID for comments
+    const commentTemplateID = 'template_oqt0uo5'; 
+
+    document.querySelectorAll('form.comment-form').forEach(form => {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formElement = this;
+            const submitButton = formElement.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML; //innerHTML to keep icon if any
+            
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+
+            emailjs.sendForm(serviceID_comments, commentTemplateID, formElement)
+                .then(() => {
+                    alert('Comment submitted successfully! It will be reviewed shortly.');
+                    const modalId = formElement.closest('.modal').id;
+                    $(`#${modalId}`).modal('hide'); // Requires jQuery for $
+                    formElement.reset();
+                }, (error) => {
+                    // Display a more user-friendly error, or log detailed error to console
+                    alert('Failed to submit comment. Please check your connection and try again. If the problem persists, please contact support.');
+                    console.error('Comment submission error:', error);
+                     // You might want to provide more specific error feedback based on 'error' object content
+                    if (error && error.status === 0) {
+                        alert('It seems you are offline. Please check your internet connection.');
+                    } else if (error && error.text) {
+                         alert('Error: ' + error.text);
+                    }
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
+        });
+    });
+});
+</script>
 
 </body>
 </html>

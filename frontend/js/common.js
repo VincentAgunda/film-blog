@@ -1,4 +1,3 @@
-// This file assumes 'auth.js' exports the 'auth' object
 import { auth, signOut } from './auth.js';
 
 export class CommonUtils {
@@ -26,7 +25,7 @@ export class CommonUtils {
         user: {
           uid: user.uid,
           email: user.email,
-          displayName: user.displayName
+          displayName: user.displayName || user.email.split('@')[0]
         }
       };
     } catch (error) {
@@ -49,27 +48,24 @@ export class CommonUtils {
   static async updateHeader() {
     const { isAuthenticated, isAdmin, user } = await this.checkAuth();
     
-    const elements = {
-      userInfo: document.getElementById('userInfoSpan'),
-      logoutBtn: document.getElementById('logoutButton'),
-      adminLink: document.getElementById('adminDashboardLink')
-    };
+    const loginLink = document.getElementById('loginDropdownLink');
+    const logoutLink = document.getElementById('logoutDropdownLink');
+    const adminDivider = document.getElementById('adminDivider');
+    const adminLink = document.getElementById('adminDashboardDropdownLink');
 
-    if (elements.userInfo) {
-      elements.userInfo.textContent = isAuthenticated ? `Hi, ${user?.displayName || 'User'}!` : '';
-      elements.userInfo.style.display = isAuthenticated ? 'inline' : 'none';
-    }
+    if (loginLink) loginLink.style.display = isAuthenticated ? 'none' : 'block';
+    if (logoutLink) logoutLink.style.display = isAuthenticated ? 'block' : 'none';
+    if (adminDivider) adminDivider.style.display = isAdmin ? 'block' : 'none';
+    if (adminLink) adminLink.style.display = isAdmin ? 'block' : 'none';
 
-    if (elements.logoutBtn) {
-      elements.logoutBtn.style.display = isAuthenticated ? 'block' : 'none';
-      elements.logoutBtn.onclick = this.logout.bind(this);
-    }
-
-    if (elements.adminLink) {
-      elements.adminLink.style.display = isAdmin ? 'block' : 'none';
+    if (logoutLink) {
+      logoutLink.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await this.logout();
+      });
     }
   }
 }
 
-// Initialize header on page load
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => CommonUtils.updateHeader());
