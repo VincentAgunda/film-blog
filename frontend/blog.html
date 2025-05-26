@@ -77,6 +77,24 @@
     border-width: .2em;
     margin-right: 0.5em;
 }
+
+/* Blog Image Styles */
+.news-block-three .image-box {
+    height: 250px;
+    overflow: hidden;
+}
+.news-block-three .image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.news-block-three .image-box:hover img {
+    transform: scale(1.05);
+}
+.news-block-three .image-box img[src="images/resource/fashion2.png"] {
+    object-position: center;
+}
 </style>
 </head>
 
@@ -155,7 +173,7 @@
         </div>
     </header>
 
-    <section class="page-title" style="background-image:url(images/background/5.jpg)">
+    <section class="page-title" style="background-image:url(images/main-slider/226.png)">
         <div class="auto-container">
             <h2>Our Blog</h2>
             <ul class="page-breadcrumb">
@@ -173,7 +191,7 @@
                     <div class="blog-classic"> <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal1"><img src="images/resource/business-blog.jpg" alt="Business Growth Strategies"></a></figure>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal1"><img src="images/resource/media1.jpg" alt="Business Growth Strategies"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
@@ -193,7 +211,7 @@
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal2"><img src="images/resource/fashion-blog.jpg" alt="Fashion Trends"></a></figure>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal2"><img src="images/resource/fashion2.png" alt="Fashion Trends"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
@@ -210,50 +228,14 @@
                             </div>
                         </div>
 
-                        <div class="news-block-three">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal3"><img src="images/resource/garden-blog.jpg" alt="Kitchen Gardening"></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="post-meta">
-                                        <ul class="post-info clearfix">
-                                            <li><a>By: Gardening CEO</a></li>
-                                            <li><a>Kitchen, Gardening</a></li>
-                                            <li><a href="#" data-toggle="modal" data-target="#commentModal3">Leave a comment</a></li>
-                                        </ul>
-                                    </div>
-                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal3">Urban Kitchen Gardening: Fresh Herbs at Home</a></h3>
-                                    <div class="text">The Gardening CEO shares practical tips for creating your own kitchen garden in urban spaces. Learn how to grow fresh herbs and vegetables even with limited space, and discover how these can enhance your cooking and pair beautifully with Miss Wine Bottle's wine recommendations...</div>
-                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal3">Read more</a></div>
-                                </div>
-                            </div>
-                        </div>
+                       
+
+                        
 
                         <div class="news-block-three">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal4"><img src="images/resource/home-blog.jpg" alt="Home Living"></a></figure>
-                                </div>
-                                <div class="lower-content">
-                                    <div class="post-meta">
-                                        <ul class="post-info clearfix">
-                                            <li><a>By: Home & Nanny Works</a></li>
-                                            <li><a>Home, Living</a></li>
-                                            <li><a href="#" data-toggle="modal" data-target="#commentModal4">Leave a comment</a></li>
-                                        </ul>
-                                    </div>
-                                    <h3><a href="#" data-toggle="modal" data-target="#blogModal4">Creating Functional & Beautiful Living Spaces</a></h3>
-                                    <div class="text">Our Home & Nanny Works team shares insights on transforming your living spaces with functional yet beautiful designs. Learn organization hacks, child-friendly decor ideas from Coulture Kids, and how to incorporate Bedazzle Central KE's customized items for a personalized touch...</div>
-                                    <div class="link-box"><a href="#" class="theme-btn read-more" data-toggle="modal" data-target="#blogModal4">Read more</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="news-block-three">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal5"><img src="images/resource/fitness-blog.jpg" alt="Fitness Health"></a></figure>
+                                    <figure class="image"><a href="#" data-toggle="modal" data-target="#blogModal5"><img src="images/resource/mission.jpg" alt="Fitness Health"></a></figure>
                                 </div>
                                 <div class="lower-content">
                                     <div class="post-meta">
@@ -618,6 +600,25 @@
 <script src="js/appear.js"></script>
 <script src="js/scrollbar.js"></script>
 <script src="js/script.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        emailjs.init("5o7FSKFsm9NBOkGZp"); // Your EmailJS Public Key
+    })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter Form Submission Logic
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterMessages = document.getElementById('newsletter-messages');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const serviceID = 'service_p2yyymj'; 
+           
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">

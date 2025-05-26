@@ -126,20 +126,7 @@
 			<!-- Banner Carousel -->
 			<div class="banner-carousel owl-theme owl-carousel">
 			
-				<!-- Slide -->
-				<div class="slide">
-                	<div class="image-layer" style="background-image:url(images/main-slider/10.jpg)"></div>
-                    
-					<div class="auto-container">
-						<div class="content">
-							<h2>Elevating Everyday Living</h2>
-							<div class="text">Mcmemuci Group is a dynamic collective of venture brands devoted to home, living, and family. We curate thoughtful products and services that enrich everyday life.</div>
-							<div class="btns-box">
-								<a href="#" class="theme-btn btn-style-one"><span class="txt">Explore Ventures</span></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 				
 				<!-- Slide -->
 				<div class="slide">
@@ -157,7 +144,7 @@
 				
 				<!-- Slide -->
 				<div class="slide">
-                	<div class="image-layer" style="background-image:url(images/main-slider/12.jpg)"></div>
+                	<div class="image-layer" style="background-image:url(images/main-slider/227.jpg)"></div>
 					<div class="auto-container">
 						<div class="content">
 							<h2>Where Every Bottle Begins a Story</h2>
@@ -200,14 +187,100 @@
 				</div>
 				
 				<!-- Video Column -->
-				<div class="video-column col-lg-6 col-md-12 col-sm-12">
-					<div class="inner-column">
-						<div class="video-box">
-							<img src="images/resource/video-img-2.jpg" alt="About Mcmemuci Group" />
-							<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><span class="flaticon-play-button"><i class="ripple"></i></span></a>
-						</div>
-					</div>
-				</div>
+				<!-- Video Section -->
+<div class="video-column col-lg-6 col-md-12 col-sm-12">
+  <div class="inner-column">
+    <div class="video-box" style="position: relative;">
+      
+      <!-- Thumbnail Image -->
+      <img
+        src="images/main-slider/1.jpg"
+        alt="About Mcmemuci Group"
+        id="video-thumbnail"
+        style="width: 100%; cursor: pointer;"
+      />
+
+      <!-- Play Icon Overlay -->
+      <span
+        id="play-button"
+        style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 40px;
+          color: white;
+          background: rgba(0, 0, 0, 0.6);
+          border-radius: 50%;
+          padding: 20px;
+          cursor: pointer;
+        "
+      >▶️</span>
+
+      <!-- Local Video -->
+      <video
+        id="company-video"
+        width="100%"
+        style="display: none;"
+        preload="metadata"
+      >
+        <source src="images/resource/company.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Custom Play/Pause Button -->
+      <button
+        id="custom-toggle"
+        style="
+          display: none;
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          background-color: rgba(0,0,0,0.7);
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+        "
+      >⏸ Pause</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const thumbnail = document.getElementById('video-thumbnail');
+  const playBtn = document.getElementById('play-button');
+  const video = document.getElementById('company-video');
+  const toggleBtn = document.getElementById('custom-toggle');
+
+  function playVideo() {
+    thumbnail.style.display = 'none';
+    playBtn.style.display = 'none';
+    video.style.display = 'block';
+    toggleBtn.style.display = 'block';
+    video.play();
+    toggleBtn.textContent = '⏸ Pause';
+  }
+
+  function togglePlayPause() {
+    if (video.paused) {
+      video.play();
+      toggleBtn.textContent = '⏸ Pause';
+    } else {
+      video.pause();
+      toggleBtn.textContent = '▶️ Play';
+    }
+  }
+
+  thumbnail.addEventListener('click', playVideo);
+  playBtn.addEventListener('click', playVideo);
+  toggleBtn.addEventListener('click', togglePlayPause);
+</script>
+
 				
 			</div>
 		</div>
@@ -366,7 +439,7 @@
 					<div class="gallery-item small-block masonry-item all wine">
 						<div class="inner-box">
 							<figure class="image-box">
-								<img src="images/gallery/2.jpg" alt="Miss Wine Bottle">
+								<img src="images/resource/wine1.jpeg" alt="Miss Wine Bottle">
 								<!--Overlay Box-->
 								<div class="overlay-box">
 									<div class="overlay-inner">
@@ -385,12 +458,12 @@
 					<div class="gallery-item small-block masonry-item all home">
 						<div class="inner-box">
 							<figure class="image-box">
-								<img src="images/gallery/3.jpg" alt="Home & Nanny Works">
+								<img src="images/resource/fashion1.jpeg" alt="Home & Nanny Works">
 								<!--Overlay Box-->
 								<div class="overlay-box">
 									<div class="overlay-inner">
 										<div class="content">
-											<h3><a href="#">Home & Nanny Works</a></h3>
+											<h3><a href="#">Fashion</a></h3>
 											<a href="images/gallery/3.jpg" data-fancybox="gallery-1" data-caption="" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
 											<a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
 										</div>
@@ -428,7 +501,7 @@
 								<div class="overlay-box">
 									<div class="overlay-inner">
 										<div class="content">
-											<h3><a href="#">The Gardening CEO</a></h3>
+											<h3><a href="#">The Wine CEO</a></h3>
 											<a href="images/gallery/7.jpg" data-fancybox="gallery-1" data-caption="" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
 											<a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
 										</div>
@@ -439,29 +512,13 @@
 					</div>
 					
 					<!-- Gallery Item -->
-					<div class="gallery-item small-block masonry-item all fashion">
-						<div class="inner-box">
-							<figure class="image-box">
-								<img src="images/gallery/5.jpg" alt="K.Muci Organics">
-								<!--Overlay Box-->
-								<div class="overlay-box">
-									<div class="overlay-inner">
-										<div class="content">
-											<h3><a href="#">K.Muci Organics</a></h3>
-											<a href="images/gallery/5.jpg" data-fancybox="gallery-1" data-caption="" class="link"><span class="icon flaticon-magnifying-glass-1"></span></a>
-											<a href="#" class="link"><span class="icon flaticon-unlink"></span></a>
-										</div>
-									</div>
-								</div>
-							</figure>
-						</div>
-					</div>
+					
 					
 					<!-- Gallery Item -->
 					<div class="gallery-item small-block masonry-item all media">
 						<div class="inner-box">
 							<figure class="image-box">
-								<img src="images/gallery/6.jpg" alt="C.Memuci Kay">
+								<img src="images/resource/media1.jpg" alt="C.Memuci Kay">
 								<!--Overlay Box-->
 								<div class="overlay-box">
 									<div class="overlay-inner">
