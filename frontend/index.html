@@ -241,19 +241,7 @@
                     </div>
                 </div>
                 
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <div class="image-layer" style="background-image:url(images/main-slider/3.jpg)"></div>
-                    <div class="auto-container">
-                        <div class="content">
-                            <h2>Curated Wine Experiences & Importation</h2>
-                            <div class="text">Miss Wine Bottle Ltd brings you premium wine selections and unforgettable tasting experiences for connoisseurs and enthusiasts alike.</div>
-                            <div class="btns-box">
-                                <a href="wine-bottle.html" class="theme-btn btn-style-one"><span class="txt">Wine Portfolio</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 
             </div>
             
@@ -489,73 +477,100 @@
     <!-- End Portfolio Section -->
     
     <!-- Media Spotlight Section -->
-   <section class="fluid-section-one" style="padding: 40px 0;">
-  <div class="outer-container" style="
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: stretch; /* equal height */
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 40px;
-  ">
+   <style>
+    /* Styles for the fluid-section-one and its contents */
+    .fluid-section-one {
+        padding: 40px 0;
+        box-sizing: border-box;
+    }
 
-    <!-- Content Column (Left) -->
-    <div class="content-column" style="
-      flex: 1;
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: #f9f9f9;
-      border-radius: 10px;
-    ">
-      <div class="content-box" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-        <h2 style="margin-top:0; margin-bottom: 16px;">MEDIA SPOTLIGHT</h2>
-        <div class="text" style="margin-bottom: 16px;">
-          Murkell Media House is revolutionizing content creation in East Africa. Our productions range from compelling television programming to innovative digital content that engages audiences across multiple platforms.
-        </div>
-        <ul class="list-style-one" style="margin-top: 0; margin-bottom: 16px; padding-left: 20px;">
-          <li>Original TV Series Production</li>
-          <li>Corporate Video Solutions</li>
-          <li>Digital Content Strategy</li>
-          <li>Live Event Coverage</li>
-          <li>Branded Entertainment</li>
-          <li>Post-Production Services</li>
-        </ul>
-        <div class="bold-text" style="margin-top: auto;">
-          Have a media project?<br>
-          <a href="contact.html">Let's create something extraordinary</a>
-        </div>
-      </div>
-    </div>
+    .fluid-section-one .outer-container {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 40px;
+        box-sizing: border-box;
+    }
 
-    <!-- Video Column (Right) -->
-    <div class="image-column" style="
-      flex: 1;
-      position: relative;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #000;
-    ">
-      <video id="customVideo" poster="images/resource/products/image1.png" style="
+    .fluid-section-one .content-column {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #f9f9f9;
+        border-radius: 10px;
+    }
+
+    .fluid-section-one .content-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .fluid-section-one .content-box h2 {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 1.8em;
+    }
+
+    .fluid-section-one .content-box .text {
+        margin-bottom: 16px;
+        line-height: 1.6;
+    }
+
+    .fluid-section-one .content-box .list-style-one {
+        margin-top: 0;
+        margin-bottom: 16px;
+        padding-left: 20px;
+        list-style-type: disc;
+    }
+
+    .fluid-section-one .content-box .list-style-one li {
+        margin-bottom: 8px;
+    }
+
+    .fluid-section-one .content-box .bold-text {
+        margin-top: auto;
+        font-weight: bold;
+    }
+
+    .fluid-section-one .content-box .bold-text a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .fluid-section-one .content-box .bold-text a:hover {
+        text-decoration: underline;
+    }
+
+    .fluid-section-one .image-column {
+        flex: 1;
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #000;
+        min-height: 300px;
+    }
+
+    .fluid-section-one .image-column video {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 10px;
         display: block;
-      ">
-        <source src="images/resource/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+        border-radius: 10px;
+    }
 
-      <!-- Custom Play Button -->
-      <div class="overlay-link" id="customPlayButton" style="
+    .fluid-section-one .overlay-link {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -569,10 +584,148 @@
         height: 80px;
         background-color: rgba(0,0,0,0.6);
         border-radius: 50%;
-      ">
-        <div class="icon-box" style="text-align: center;">
-          <span class="icon flaticon-play-button" style="font-size: 32px; color: #fff;"></span>
-          <i class="ripple"></i>
+        transition: background-color 0.3s ease;
+    }
+
+    .fluid-section-one .overlay-link:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .fluid-section-one .overlay-link .icon-box {
+        text-align: center;
+    }
+
+    .fluid-section-one .overlay-link .icon {
+        font-size: 32px;
+        color: #fff;
+    }
+
+    /* Add styles for your pause button icon if it's different */
+    /* Example:
+    .fluid-section-one .flaticon-pause-button::before {
+        content: "\your-pause-icon-code";
+        font-family: "Flaticon";
+    }
+    */
+
+    /* ----- Mobile Responsiveness ----- */
+    @media (max-width: 991px) {
+        .fluid-section-one .outer-container {
+            gap: 30px;
+        }
+        .fluid-section-one .content-box h2 {
+            font-size: 1.6em;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .fluid-section-one .outer-container {
+            flex-direction: column;
+            gap: 25px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .fluid-section-one .content-column,
+        .fluid-section-one .image-column {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+
+        .fluid-section-one .image-column {
+            min-height: 280px;
+        }
+
+        .fluid-section-one .content-box h2 {
+            font-size: 1.5em;
+        }
+
+        .fluid-section-one .content-box .text,
+        .fluid-section-one .content-box .list-style-one li {
+            font-size: 0.95em;
+        }
+
+        .fluid-section-one .overlay-link {
+            width: 70px;
+            height: 70px;
+        }
+
+        .fluid-section-one .overlay-link .icon {
+            font-size: 28px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .fluid-section-one {
+            padding: 30px 0;
+        }
+
+        .fluid-section-one .outer-container {
+            gap: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .fluid-section-one .content-column {
+            padding: 15px;
+        }
+
+        .fluid-section-one .content-box h2 {
+            font-size: 1.3em;
+        }
+
+        .fluid-section-one .content-box .text,
+        .fluid-section-one .content-box .list-style-one li {
+            font-size: 0.9em;
+        }
+
+        .fluid-section-one .image-column {
+            min-height: 220px;
+        }
+
+         .fluid-section-one .overlay-link {
+            width: 60px;
+            height: 60px;
+        }
+
+        .fluid-section-one .overlay-link .icon {
+            font-size: 24px;
+        }
+    }
+</style>
+
+<section class="fluid-section-one">
+  <div class="outer-container">
+
+    <div class="content-column">
+      <div class="content-box">
+        <h2>MEDIA SPOTLIGHT</h2>
+        <div class="text">
+          Murkell Media House is revolutionizing content creation in East Africa. Our productions range from compelling television programming to innovative digital content that engages audiences across multiple platforms.
+        </div>
+        <ul class="list-style-one">
+          <li>Original TV Series Production</li>
+          <li>Corporate Video Solutions</li>
+          <li>Digital Content Strategy</li>
+          <li>Live Event Coverage</li>
+          <li>Branded Entertainment</li>
+          <li>Post-Production Services</li>
+        </ul>
+        <div class="bold-text">
+          Have a media project?<br>
+          <a href="contact.html">Let's create something extraordinary</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="image-column">
+      <video id="customVideo" poster="images/resource/products/image1.png">
+        <source src="images/resource/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay-link" id="customPlayButton">
+        <div class="icon-box">
+          <span class="icon flaticon-play-button" id="playPauseIcon"></span>
         </div>
       </div>
     </div>
@@ -583,13 +736,70 @@
 <script>
   const video = document.getElementById('customVideo');
   const playButton = document.getElementById('customPlayButton');
+  const playPauseIcon = document.getElementById('playPauseIcon');
 
-  playButton.addEventListener('click', () => {
-    video.play();
-    playButton.style.display = 'none';
-  });
+  // Define your icon classes
+  const playIconClass = 'flaticon-play-button';
+  const pauseIconClass = 'flaticon-pause-button'; // Make sure you have this class defined in your Flaticon CSS
+
+  // --- Fallback if you don't have a Flaticon pause icon ---
+  // If you don't have a 'flaticon-pause-button', you can use text or Unicode characters.
+  // To do this, you would modify the .textContent of playPauseIcon instead of its className.
+  // Example for text fallback:
+  // const useTextFallback = true; // Set to true if you don't have flaticon-pause-button
+  // if (useTextFallback) {
+  //    playPauseIcon.style.fontFamily = 'Arial, sans-serif'; // Ensure consistent font
+  // }
+  // Then in event listeners:
+  // playPauseIcon.textContent = '❚❚'; // For Pause
+  // playPauseIcon.textContent = '►'; // For Play
+  // --- End Fallback ---
+
+  if (video && playButton && playPauseIcon) {
+    playButton.addEventListener('click', () => {
+      if (video.paused || video.ended) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener('play', () => {
+      // Update icon to PAUSE
+      playPauseIcon.classList.remove(playIconClass);
+      playPauseIcon.classList.add(pauseIconClass);
+      // playButton.setAttribute('aria-label', 'Pause'); // Accessibility
+      // playPauseIcon.textContent = '❚❚'; // Text fallback
+    });
+
+    video.addEventListener('pause', () => {
+      // Update icon to PLAY
+      playPauseIcon.classList.remove(pauseIconClass);
+      playPauseIcon.classList.add(playIconClass);
+      // playButton.setAttribute('aria-label', 'Play'); // Accessibility
+      // playPauseIcon.textContent = '►'; // Text fallback
+    });
+
+    video.addEventListener('ended', () => {
+      // Reset icon to PLAY when video ends
+      playPauseIcon.classList.remove(pauseIconClass);
+      playPauseIcon.classList.add(playIconClass);
+      // playButton.setAttribute('aria-label', 'Play'); // Accessibility
+      // video.currentTime = 0; // Optional: rewind to start
+      // playPauseIcon.textContent = '►'; // Text fallback
+    });
+
+    // Set initial state correctly if video might autoplay or be in a non-default state
+    if (video.paused || video.ended) {
+        playPauseIcon.classList.remove(pauseIconClass);
+        playPauseIcon.classList.add(playIconClass);
+    } else {
+        playPauseIcon.classList.remove(playIconClass);
+        playPauseIcon.classList.add(pauseIconClass);
+    }
+
+  }
 </script>
-
     
     <!-- Business Approach Section -->
     <section class="featured-section" style="background-image: url(images/background/2.jpg)">
